@@ -53,6 +53,8 @@ function getFormatDataError(error) {
 }
 
 function subir_video(){
+    var splashLoading = document.getElementById('splashLoading');
+	splashLoading.style.display = 'block';		
 	var options = new FileUploadOptions();
 	options.chunkedMode = true;
 	options.fileKey="file";
@@ -63,5 +65,16 @@ function subir_video(){
 
 	var ft = new FileTransfer();
 	ft.upload(videoUri, encodeURI("http://www.tipuanatipu.com.ar/lukas/lineas/ws_add_video"), uploadSuccess, uploadFail, options);
-	alert("listo!");
+}
+
+function uploadSuccess(){
+    var splashLoading = document.getElementById('splashLoading');
+	splashLoading.style.display = 'none';	
+	alert("SI!");	
+}
+
+function uploadFail(){
+    var splashLoading = document.getElementById('splashLoading');
+	splashLoading.style.display = 'none';		
+	alert("NO!");	
 }
