@@ -17,6 +17,7 @@ function videoCapturePlus(highquality, frontcamera, duration) {
 }
 
 function captureSuccess(mediaFiles) {
+  document.getElementById('pluginsDemoDiv').style.display = 'block';
   var i, len;
   for (i = 0, len = mediaFiles.length; i < len; i++) {
     var mediaFile = mediaFiles[i];

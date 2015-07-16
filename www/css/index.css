@@ -144,3 +144,13 @@ h1 {
 .boton_upload:hover{
 	background-color: #580809;	
 }
+
+.verde_transparente{
+	background-color: rgba(52,147,2,0.50);
+	border: 0px;
+}
+
+.rojo_transparente{
+	background-color: rgba(168,9,11,0.50);
+	border: 0px;
+}

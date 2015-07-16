@@ -49,10 +49,18 @@
                 <i class="fa fa-crosshairs"></i>
             </button>
         </div>    
-        <div id="pluginsDemoDiv" style="z-index:2000; float:right; position:absolute; top:50px; text-align:: center;">    
+        <div id="pluginsDemoDiv" style="display: none; z-index:2000; width: 100%;  float:right; position:absolute; top:50px; text-align: center;">    
             <div id="video_meta_container" style="margin: auto; display:none;"></div>
             <div id="video_meta_container2" style="margin: auto; display:none;"></div>
-            <div id="video_container" style="margin: auto;"></div>
+            <div id="video_container" style="margin: auto; text-align: center;"></div>
+            <div id="video_botones" style="text-align: center;">
+                <button type="button" class="btn btn-danger rojo_transparente" style="width:120px;" onclick="centrarMiPosicion()">
+                    Cancelar
+                </button>            	
+                <button type="button" class="btn btn-success verde_transparente" style="width:120px;" onclick="centrarMiPosicion()">
+                   	Subir
+                </button>            	
+            </div>
         </div>
     
         <div id="map" style="width:100%;height:100%;"></div>
