@@ -113,3 +113,31 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+/* Estilo Principal */
+
+.input_buscador{
+	width: 200px; 
+	background-color: rgba(187, 31, 34, 0.5); 
+	border-radius: 10px;
+	height: 33px;
+	padding-left: 7px;
+	color: #FFF;
+	border: 0px;
+}
+
+::-webkit-input-placeholder { color: white; } /* WebKit */
+:-moz-placeholder { color: white; } /* Firefox 18- */
+::-moz-placeholder { color: white; } /* Firefox 19+ */
+:-ms-input-placeholder { color: white; } /* IE 10+ */
+
+.boton_upload{
+	background-color: rgba(187, 31, 34, 0.5); 
+	border: 0px;
+	height: 60px;
+	border-radius: 60px;
+}
+
+.boton_upload:hover{
+	background-color: #580809;	
+}
