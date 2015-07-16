@@ -39,7 +39,7 @@
         
         <div style="z-index: 1000; float: left; 
         	position: absolute; bottom: 5px; width: 100%; text-align: center;">
-            <button type="button" class="btn btn-primary boton_upload" onclick="abrir_video()">
+            <button type="button" class="btn btn-primary boton_upload" onclick="videoCapturePlus(false,true,5)">
                 iPeak
             </button>
         </div>        
@@ -50,8 +50,8 @@
             </button>
         </div>    
         <div id="pluginsDemoDiv" style="z-index:2000; float:right; position:absolute; top:50px; text-align:: center;">    
-            <div id="video_meta_container" style="margin: auto;"></div>
-            <div id="video_meta_container2" style="margin: auto;"></div>
+            <div id="video_meta_container" style="margin: auto; display:none;"></div>
+            <div id="video_meta_container2" style="margin: auto; display:none;"></div>
             <div id="video_container" style="margin: auto;"></div>
         </div>
     
@@ -64,6 +64,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>	        
     <script type="text/javascript" src="js/ol.js"></script>	
     <script type="text/javascript" src="js/mapa.js"></script>
+	<script type="text/javascript" src="js/video_plus.js"></script>    
     <script type="text/javascript">
       app.initialize();
 	  function abrir_video(){
