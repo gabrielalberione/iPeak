@@ -15,7 +15,7 @@ function videoCapturePlus(highquality, frontcamera, duration) {
       }
   );
 }
-
+var videoUri = "";
 function captureSuccess(mediaFiles) {
   document.getElementById('pluginsDemoDiv').style.display = 'block';
   var i, len;
@@ -31,6 +31,7 @@ function captureSuccess(mediaFiles) {
     var source_vid = document.createElement('source');
     source_vid.id = "theSource";
     source_vid.src = mediaFile.fullPath;
+	videoUri = mediaFile.fullPath; 
     vid.appendChild(source_vid);
     document.getElementById('video_container').innerHTML = '';
     document.getElementById('video_container').appendChild(vid);
@@ -49,4 +50,18 @@ function captureError(error) {
 
 function getFormatDataError(error) {
   alert('A Format Data Error occurred during getFormatData: ' + error.code);
+}
+
+function subir_video(){
+	var options = new FileUploadOptions();
+	options.chunkedMode = true;
+	options.fileKey="file";
+	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
+	options.mimeType="video/mpeg";
+
+	options.params = params;
+
+	var ft = new FileTransfer();
+	ft.upload(videoUri, encodeURI("http://www.tipuanatipu.com.ar/lukas/lineas/ws_add_video"), uploadSuccess, uploadFail, options);
+	alert("listo!");
 }
