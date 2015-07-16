@@ -36,8 +36,4 @@
 	<gap:plugin name="nl.x-services.plugins.videocaptureplus" version="1.2" />	
 	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
 	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />	
-	<!-- for iOS -->
-	<feature name="VideoCapturePlus">
-	  <param name="ios-package" value="VideoCapturePlus" />
-	</feature>	
 </widget>
