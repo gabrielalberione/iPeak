@@ -1,7 +1,6 @@
 "use strict";
 
 function videoCapturePlus(highquality, frontcamera, duration) {
-	window.open("subir_video.html","_self");
   window.plugins.videocaptureplus.captureVideo(
       captureSuccess,
       captureError,
