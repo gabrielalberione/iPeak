@@ -1,39 +1,61 @@
-<<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <meta charset="utf-8"/>
-  <meta name="format-detection" content="telephone=no"/>
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
-  <link rel="stylesheet" type="text/css" href="css/app.css"/>
-  <title>Hello VideoCapturePlus</title>
+<meta charset="utf-8">
+<title>iPeak</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+<link href="css/ol.css" rel="stylesheet" type="text/css">
+<link href="css/app.css" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="app">
-  <h1>VideoCapturePlus</h1>
-  <div id="deviceready" class="blink">
-    <p class="event listening">Connecting to Device</p>
-    <p class="event received">Device is Ready</p>
-  </div>
-  <div id="pluginsDemoDiv">
-    <p>
-      <button onclick="videoCapturePlusDemo(false,false,2)">LQ back 2s</button>
-      <br/><br/>
-      <button onclick="videoCapturePlusDemo(true,false,3)">HQ back 3s</button>
-      <br/><br/>
-      <button onclick="videoCapturePlusDemo(false,true,4)">LQ front 4s</button>
-      <br/><br/>
-      <button onclick="videoCapturePlusDemo(true,true,5)">HQ front 5s</button>
-    </p>
-    <div id="video_meta_container"></div>
-    <div id="video_meta_container2"></div>
-    <div id="video_container"></div>
-  </div>
+<style>
+.ol-zoom{
+	display: none;
+}
+.ol-attribution{
+	display: none;
+}
+.ol-rotate{
+	top: auto;
+	bottom: 170px;
+	right: 18px;
+	display: none;
+}
+
+img { display:inline;}
+</style>
+<div data-snap-ignore="true">
+
+	<div id="div_buscar" style="z-index: 1000; float: left; 
+    position: absolute; top: 15px; width: 100%; text-align: center;">
+    	<input type="search" class="input_buscador" placeholder="buscar..." />
+    </div>
+    
+	<div style="z-index: 1000; float: left; 
+    position: absolute; bottom: 5px; width: 100%; text-align: center;">
+        <button type="button" class="btn btn-primary boton_upload" onclick="videoCapturePlus(false,true,5)">
+            iPeak
+        </button>
+    </div>        
+   
+    <div class="btn-group" style="z-index:1000; float:right; position:absolute; bottom:10px; right:10px">
+        <button type="button" class="btn btn-primary" onclick="centrarMiPosicion()">
+            <i class="fa fa-crosshairs"></i>
+        </button>
+    </div>    
+    <div style="z-index:2000; float:right; position:absolute; top:50px; text-align:: center;">    
+        <div id="video_meta_container" style="margin: auto;"></div>
+        <div id="video_meta_container2" style="margin: auto;"></div>
+        <div id="video_container" style="margin: auto;"></div>
+    </div>
+
+    <div id="map" style="width:100%;height:100%;"></div>
 </div>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/demo.js"></script>
-<script type="text/javascript">
-  app.initialize();
-</script>
+<div>&nbsp;</div>
+<script type="text/javascript" src="js/jquery.js"></script>			        
+<script type="text/javascript" src="js/ol.js"></script>	
+<script type="text/javascript" src="js/mapa.js"></script>	
 </body>
 </html>

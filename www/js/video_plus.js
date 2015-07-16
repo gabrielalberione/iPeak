@@ -1,6 +1,6 @@
 "use strict";
 
-function videoCapturePlusDemo(highquality, frontcamera, duration) {
+function videoCapturePlus(highquality, frontcamera, duration) {
   window.plugins.videocaptureplus.captureVideo(
       captureSuccess,
       captureError,
