@@ -53,6 +53,7 @@ function getFormatDataError(error) {
 }
 
 function subir_video(){
+	document.getElementById('pluginsDemoDiv').style.display = 'none';
     var splashLoading = document.getElementById('splashLoading');
 	splashLoading.style.display = 'block';		
 	var options = new FileUploadOptions();
@@ -65,6 +66,10 @@ function subir_video(){
 
 	var ft = new FileTransfer();
 	ft.upload(videoUri, encodeURI("http://www.tipuanatipu.com.ar/lukas/lineas/ws_add_video"), uploadSuccess, uploadFail, options);
+}
+
+function cancelar_video(){
+	document.getElementById('pluginsDemoDiv').style.display = 'none';
 }
 
 function uploadSuccess(){

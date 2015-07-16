@@ -116,13 +116,14 @@ h1 {
 }
 
 .spinner {
+	z-index: 3000; 
 	height: 100%;
 	float: left;
 	width: 100%;
 	position: absolute;
 	top: 0px;
 	margin-left: -15px;
-	background-color: rgba(41, 128, 204, 0.9);
+	background-color: rgba(162,12,50,0.90);
 }
 
 .cube1, .cube2 {
