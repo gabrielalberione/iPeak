@@ -181,8 +181,9 @@ h1 {
 .boton_upload{
 	background-color: rgba(187, 31, 34, 0.7); 
 	border: 0px;
-	height: 60px;
-	border-radius: 60px;
+	height: 80px;
+	width: 80px;
+	border-radius: 80px;
 }
 
 .boton_upload:hover{

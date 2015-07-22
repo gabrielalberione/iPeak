@@ -65,7 +65,7 @@ function subir_video(){
 	options.params = params;
 
 	var ft = new FileTransfer();
-	ft.upload(videoUri, encodeURI("http://www.tipuanatipu.com.ar/lukas/lineas/ws_add_video"), uploadSuccess, uploadFail, options);
+	ft.upload(videoUri, encodeURI("http://190.12.101.74/ais/ipeak/ws/layers/alta_marker"), uploadSuccess, uploadFail, options);
 }
 
 function cancelar_video(){

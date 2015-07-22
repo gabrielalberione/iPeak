@@ -14,23 +14,23 @@
 <style>
 @keyframes animatedBackground {
     0% { background-position: 0 0; }
-    100% { background-position: -300px -300px; }
+    100% { background-position: -250px -250px; }
 }
 @-moz-keyframes animatedBackground {
     0% { background-position: 0 0; }
-    100% { background-position: -300px -300px; }
+    100% { background-position: -250px -250px; }
 }
 @-webkit-keyframes animatedBackground {
     0% { background-position: 0 0; }
-    100% { background-position: -300px -300px; }
+    100% { background-position: -250px -250px; }
 }
 @-ms-keyframes animatedBackground {
     0% { background-position: 0 0; }
-    100% { background-position: -300px -300px; }
+    100% { background-position: -250px -250px; }
 }
 @-o-keyframes animatedBackground {
     0% { background-position: 0 0; }
-    100% { background-position: -300px -300px; }
+    100% { background-position: -250px -250px; }
 }
 
 body { 
@@ -39,22 +39,22 @@ body {
     background-image: url('img/fondo.jpg');
     background-position: 0px 0px;
 
-    animation: animatedBackground 20s linear infinite;
-    -moz-animation: animatedBackground 20s linear infinite;
-    -webkit-animation: animatedBackground 20s linear infinite;
-    -ms-animation: animatedBackground 20s linear infinite;
-    -o-animation: animatedBackground 20s linear infinite;
+    animation: animatedBackground 15s linear infinite;
+    -moz-animation: animatedBackground 15s linear infinite;
+    -webkit-animation: animatedBackground 15s linear infinite;
+    -ms-animation: animatedBackground 15s linear infinite;
+    -o-animation: animatedBackground 15s linear infinite;
 }
 </style>
 <body>
     <body>  
-        <div style="width:100%; text-align:center; top: 50%; position:absolute; margin-top: -91px;">
-            <img src="img/logo_largo.png" style="width: 90%; margin: auto;">
+        <div style="width:100%; text-align:center; top: 50%; position:absolute; margin-top: -110px;">
+            <img src="img/logo_largo.png" style="width: 90%; margin: auto;min-width: 320px;">
             <div style="width:60%; margin:auto; margin-top: 25px;">
-                <a href="javascript:abrirMapa();" class="btn btn-block btn-social btn-twitter">
+                <a href="javascript:abrirMapa();" class="btn btn-block btn-social btn-twitter" style="min-width: 220px;">
                     <i class="fa fa-twitter"></i> Login con Twitter
                 </a>            
-                <a href="javascript:abrirMapa();" class="btn btn-block btn-social btn-facebook" style="margin-top: 20px">
+                <a href="javascript:abrirMapa();" class="btn btn-block btn-social btn-facebook" style="min-width: 220px;margin-top: 20px">
                     <i class="fa fa-facebook"></i> Login con Facebook
                 </a>            
             </div>
