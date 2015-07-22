@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+    
+    <title>iPeak</title>
+	<link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/font-awesome.css" rel="stylesheet" type="text/css">    
+    <link href="css/bootstrap-social.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+@keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -250px -250px; }
+}
+@-moz-keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -250px -250px; }
+}
+@-webkit-keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -250px -250px; }
+}
+@-ms-keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -250px -250px; }
+}
+@-o-keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -250px -250px; }
+}
+
+body { 
+    width: 100%; 
+    height: 100%; 
+    background-image: url('img/fondo.jpg');
+    background-position: 0px 0px;
+
+    animation: animatedBackground 15s linear infinite;
+    -moz-animation: animatedBackground 15s linear infinite;
+    -webkit-animation: animatedBackground 15s linear infinite;
+    -ms-animation: animatedBackground 15s linear infinite;
+    -o-animation: animatedBackground 15s linear infinite;
+}
+</style>
+<body>
+    <body>  
+        <div style="width:100%; text-align:center; top: 50%; position:absolute; margin-top: -110px;">
+            <img src="img/logo_largo.png" style="width: 90%; margin: auto;min-width: 320px;">
+            <div style="width:60%; margin:auto; margin-top: 25px;">
+                <a href="javascript:abrirMapa();" class="btn btn-block btn-social btn-twitter" style="min-width: 220px;">
+                    <i class="fa fa-twitter"></i> Login con Twitter
+                </a>            
+                <a href="javascript:abrirMapa();" class="btn btn-block btn-social btn-facebook" style="min-width: 220px;margin-top: 20px">
+                    <i class="fa fa-facebook"></i> Login con Facebook
+                </a>            
+            </div>
+        </div>  
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>		
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>	
+        <script>
+			function abrirMapa(){
+				window.open("mapa.html","_self");
+			}
+		</script>                    
+    </body>
+</body>
+</html>

@@ -6,67 +6,83 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
     
     <title>iPeak</title>
-	<link href="css/index.css" rel="stylesheet" type="text/css">
+    
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="css/font-awesome.css" rel="stylesheet" type="text/css">    
-    <link href="css/bootstrap-social.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ol.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
-<style>
-@keyframes animatedBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: -250px -250px; }
-}
-@-moz-keyframes animatedBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: -250px -250px; }
-}
-@-webkit-keyframes animatedBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: -250px -250px; }
-}
-@-ms-keyframes animatedBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: -250px -250px; }
-}
-@-o-keyframes animatedBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: -250px -250px; }
-}
-
-body { 
-    width: 100%; 
-    height: 100%; 
-    background-image: url('img/fondo.jpg');
-    background-position: 0px 0px;
-
-    animation: animatedBackground 15s linear infinite;
-    -moz-animation: animatedBackground 15s linear infinite;
-    -webkit-animation: animatedBackground 15s linear infinite;
-    -ms-animation: animatedBackground 15s linear infinite;
-    -o-animation: animatedBackground 15s linear infinite;
-}
-</style>
 <body>
-    <body>  
-        <div style="width:100%; text-align:center; top: 50%; position:absolute; margin-top: -110px;">
-            <img src="img/logo_largo.png" style="width: 90%; margin: auto;min-width: 320px;">
-            <div style="width:60%; margin:auto; margin-top: 25px;">
-                <a href="javascript:abrirMapa();" class="btn btn-block btn-social btn-twitter" style="min-width: 220px;">
-                    <i class="fa fa-twitter"></i> Login con Twitter
-                </a>            
-                <a href="javascript:abrirMapa();" class="btn btn-block btn-social btn-facebook" style="min-width: 220px;margin-top: 20px">
-                    <i class="fa fa-facebook"></i> Login con Facebook
-                </a>            
+     <div class="spinner" style="display: none;" id="splashLoading">
+          <div class="cube1"></div>
+          <div class="cube2"></div>
+          <p style="top: 56%; left: 41%; color: rgb(255, 255, 255); position: absolute;"><b>Subiendo...</b></p>
+        </div>
+	<style>
+    .ol-zoom{
+        display: none;
+    }
+    .ol-attribution{
+        display: none;
+    }
+    .ol-rotate{
+        top: auto;
+        bottom: 170px;
+        right: 18px;
+        display: none;
+    }
+    
+    img { display:inline;}
+    </style>
+    <div data-snap-ignore="true">
+    
+        <div id="div_buscar" style="z-index: 1000; float: left; 
+        	position: absolute; top: 10px; width: 100%; text-align: center;">
+            <input type="search" class="input_buscador" placeholder="buscar..." />
+        </div>
+        
+        <div style="z-index: 1000; float: left; 
+        	position: absolute; bottom: 5px; width: 100%; text-align: center;">
+            <button type="button" class="btn btn-primary boton_upload" onclick="videoCapturePlus(false,true,5)">
+                <img src="img/peek.png" style="height: 40px;">
+            </button>
+        </div>        
+       
+        <div class="btn-group" style="z-index:1000; float:right; position:absolute; bottom:10px; right:10px">
+            <button type="button" class="btn btn-primary" onclick="centrarMiPosicion()">
+                <i class="fa fa-crosshairs"></i>
+            </button>
+        </div>    
+        <div id="pluginsDemoDiv" style="display: none; z-index:2000; width: 100%;  float:right; position:absolute; top:70px; text-align: center;">    
+            <div id="video_meta_container" style="margin: auto; display:none;"></div>
+            <div id="video_meta_container2" style="margin: auto; display:none;"></div>
+            <div id="video_container" style="margin: auto; text-align: center;"></div>
+            <div id="video_botones" style="text-align: center;">
+                <button type="button" class="btn btn-danger rojo_transparente" style="width:120px;" onclick="cancelar_video()">
+                    Cancelar
+                </button>            	
+                <button type="button" class="btn btn-success verde_transparente" style="width:120px;" onclick="subir_video()">
+                   	Subir
+                </button>            	
             </div>
-        </div>  
-		<script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>		
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>	
-        <script>
-			function abrirMapa(){
-				window.open("mapa.html","_self");
-			}
-		</script>                    
-    </body>
+        </div>
+    
+        <div id="map" style="width:100%;height:100%;"></div>
+    </div>
+    <div>&nbsp;</div>
+	<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>    
+    <script type="text/javascript" src="js/jquery.js"></script>		
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>	        
+    <script type="text/javascript" src="js/ol.js"></script>	
+    <script type="text/javascript" src="js/mapa.js"></script>
+	<script type="text/javascript" src="js/video_plus.js"></script>    
+    <script type="text/javascript">
+      app.initialize();
+	  function abrir_video(){
+		  	window.open("subir_video.html","_self");
+	  }
+    </script>	
 </body>
 </html>
