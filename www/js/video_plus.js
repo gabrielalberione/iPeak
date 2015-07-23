@@ -32,7 +32,6 @@ function captureSuccess(mediaFiles) {
     source_vid.id = "theSource";
     source_vid.src = mediaFile.fullPath;
 	videoUri = mediaFile.fullPath; 
-	alert(videoUri);
     vid.appendChild(source_vid);
     document.getElementById('video_container').innerHTML = '';
     document.getElementById('video_container').appendChild(vid);
@@ -54,6 +53,7 @@ function getFormatDataError(error) {
 }
 
 function subir_video(){
+	alert(videoUri);
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
     var splashLoading = document.getElementById('splashLoading');
 	splashLoading.style.display = 'block';		
@@ -61,7 +61,7 @@ function subir_video(){
 	options.chunkedMode = true;
 	options.fileKey="file";
 	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
-	options.mimeType="video/mpeg";
+	options.mimeType="video/quicktime";
 
 	options.params = params;
 
