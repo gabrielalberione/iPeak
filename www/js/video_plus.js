@@ -73,13 +73,13 @@ function cancelar_video(){
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
 }
 
-function uploadSuccess(){
+function uploadSuccess(r){
     var splashLoading = document.getElementById('splashLoading');
 	splashLoading.style.display = 'none';	
 	alert("SI!");	
 }
 
-function uploadFail(){
+function uploadFail(error){
     var splashLoading = document.getElementById('splashLoading');
 	splashLoading.style.display = 'none';		
 	alert("NO!");	
