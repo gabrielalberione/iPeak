@@ -30,6 +30,8 @@ var app = {
     }
 };
 
+app.initialize();
+
 // cuando devuelve la pos el gps
 var onSuccessGPS = function(position) {    
    /* alert('Latitude: '          + position.coords.latitude          + '\n' +
