@@ -32,6 +32,7 @@ function captureSuccess(mediaFiles) {
     source_vid.id = "theSource";
     source_vid.src = mediaFile.fullPath;
 	videoUri = mediaFile.fullPath; 
+	alert(videoUri);
     vid.appendChild(source_vid);
     document.getElementById('video_container').innerHTML = '';
     document.getElementById('video_container').appendChild(vid);
