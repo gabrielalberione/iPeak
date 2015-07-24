@@ -52,8 +52,7 @@ function getFormatDataError(error) {
   alert('A Format Data Error occurred during getFormatData: ' + error.code);
 }
 
-function subir_video(){
-	alert(videoUri);
+function subir_video(){	
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
     var splashLoading = document.getElementById('splashLoading');
 	splashLoading.style.display = 'block';		
