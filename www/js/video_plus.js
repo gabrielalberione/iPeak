@@ -63,14 +63,14 @@ function subir_video(){
 	options.mimeType="video/quicktime";
 
 	options.params = params;
-
+	alert(videoUri);
 	var ft = new FileTransfer();
-	ft.upload(videoUri, "http://190.12.101.74/ais/ipeak/ws/layers/alta_marker",
+	ft.upload(videoUri, encodeURI("http://190.12.101.74/ais/ipeak/ws/layers/alta_marker"),
         function(result) {
             alert('Upload success: ' + result.responseCode);
         },
         function(error) {
-           alert('Error uploading file ' + path + ': ' + error.code);
+           alert('Error uploading file ' + videoUri + ': ' + error.code);
         }, options);
 }
 
