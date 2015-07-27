@@ -54,8 +54,8 @@ function getFormatDataError(error) {
 
 function subir_video(){	
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
-    var splashLoading = document.getElementById('splashLoading');
-	splashLoading.style.display = 'block';		
+  //  var splashLoading = document.getElementById('splashLoading');
+//	splashLoading.style.display = 'block';		
 	var options = new FileUploadOptions();
 	options.chunkedMode = true;
 	options.fileKey="file";
@@ -65,7 +65,13 @@ function subir_video(){
 	options.params = params;
 
 	var ft = new FileTransfer();
-	ft.upload(videoUri, encodeURI("http://190.12.101.74/ais/ipeak/ws/layers/alta_marker"), uploadSuccess, uploadFail, options);
+	ft.upload(videoUri, "http://190.12.101.74/ais/ipeak/ws/layers/alta_marker",
+        function(result) {
+            alert('Upload success: ' + result.responseCode);
+        },
+        function(error) {
+           alert('Error uploading file ' + path + ': ' + error.code);
+        }, options);
 }
 
 function cancelar_video(){
