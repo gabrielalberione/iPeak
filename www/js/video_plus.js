@@ -54,24 +54,21 @@ function getFormatDataError(error) {
 
 function subir_video(){	
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
-  //  var splashLoading = document.getElementById('splashLoading');
-//	splashLoading.style.display = 'block';		
+    var splashLoading = document.getElementById('splashLoading');
+	splashLoading.style.display = 'block';		
 	var options = new FileUploadOptions();
 	options.chunkedMode = true;
 	options.fileKey="file";
 	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
 	options.mimeType="video/quicktime";
-	
-	alert("hola!");
-	alert(videoUri);
+	var params = {};
+	params.evento_id = "3";		
+	options.params = params;
+
 	var ft = new FileTransfer();
 	ft.upload(videoUri, encodeURI("http://190.12.101.74/ais/ipeak/ws/layers/alta_marker"),
-        function(result) {
-            alert('Upload success: ' + result.responseCode);
-        },
-        function(error) {
-           alert('Error uploading file ' + videoUri + ': ' + error.code);
-        }, options);
+        uploadSuccess,
+        uploadFail, options);
 }
 
 function cancelar_video(){
