@@ -61,8 +61,8 @@ function subir_video(){
 	options.fileKey="file";
 	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
 	options.mimeType="video/quicktime";
-
-	options.params = params;
+	
+	alert("hola!");
 	alert(videoUri);
 	var ft = new FileTransfer();
 	ft.upload(videoUri, encodeURI("http://190.12.101.74/ais/ipeak/ws/layers/alta_marker"),
