@@ -5,8 +5,8 @@ var urlTile;
 var urlWMS;
 var mapFile;
 
-var posActual = [-584320, -345795];
-var posInicial = [-584320, -345795];
+var posActual = [-6504570.927285643, -4108000.5912273894];
+var posInicial = [-6504570.927285643, -4108000.5912273894];
 var featurePosActual;
 
 var opClick = 0;

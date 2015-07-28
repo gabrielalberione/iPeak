@@ -26,7 +26,7 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#E4E4E4;
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:'Relaway';
     font-size:12px;
     height:100%;
     margin:0px;
@@ -164,11 +164,12 @@ h1 {
 .input_buscador{
 	width: 200px; 
 	background-color: rgba(187, 31, 34, 0.7); 
-	border-radius: 10px;
+	border-radius: 5px;
 	height: 33px;
 	padding-left: 7px;
 	color: #FFF;
 	border: 0px;
+	font-size: 12px;
 }
 
 ::-webkit-input-placeholder { color: white; } /* WebKit */
@@ -197,4 +198,24 @@ h1 {
 .rojo_transparente{
 	background-color: rgba(168,9,11,0.70);
 	border: 0px;
+}
+
+@font-face {
+    font-family: 'Relaway'; /*a name to be used later*/
+    src: url('../fonts/Raleway-Regular.ttf'); /*URL to font*/
+}
+
+.btn_blanco{
+	background-color: #fff;
+	height: 50px;
+	width: 50px;
+	border-color: #fff;
+	border-radius: 50px;
+	color: #B85254;
+}
+
+.btn_blanco:hover{
+	background-color: #B85254;
+	border-color: #B85254;
+	color: #fff;
 }
