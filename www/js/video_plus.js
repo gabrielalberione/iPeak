@@ -62,11 +62,13 @@ function subir_video(){
 	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
 	options.mimeType="video/quicktime";
 	var params = {};
-	params.evento_id = "3";		
+	params.titulo = "prueba";	
+	var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
+	params.geom = "GEOM("+pos4326[0]+" "+pos4326[1]+")";	
 	options.params = params;
 
 	var ft = new FileTransfer();
-	ft.upload(videoUri, encodeURI("http://190.12.101.74/ais/ipeak/ws/layers/alta_marker"),
+	ft.upload(videoUri, encodeURI("http://190.12.101.74/ais/ipeak/ws/entidades/guardar"),
         uploadSuccess,
         uploadFail, options);
 }
