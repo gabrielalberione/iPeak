@@ -80,7 +80,7 @@ function cancelar_video(){
 function uploadSuccess(r){
     var splashLoading = document.getElementById('splashLoading');
 	splashLoading.style.display = 'none';	
-	alert("SI!");	
+	alert(r);	
 }
 
 function uploadFail(error){
