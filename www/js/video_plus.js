@@ -64,7 +64,7 @@ function subir_video(){
 	var params = {};
 	params.titulo = "prueba";	
 	var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
-	params.geom = "GEOM("+pos4326[0]+" "+pos4326[1]+")";	
+	params.geom = "POINT("+pos4326[0]+" "+pos4326[1]+")";	
 	options.params = params;
 
 	var ft = new FileTransfer();
