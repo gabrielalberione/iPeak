@@ -107,6 +107,11 @@ function cancelar_video(){
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
 }
 
+function salir_video(){
+	$("#div_buscar").toggle();
+	$("#video_play").toggle();
+}
+
 function uploadSuccess(r){
     var splashLoading = document.getElementById('splashLoading');
 	splashLoading.style.display = 'none';	

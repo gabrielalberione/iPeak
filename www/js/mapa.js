@@ -93,8 +93,10 @@ function inicializar(){
 			//		$('#infoEntidadImg').attr('src',urlimg);	
 					//alert();
 					//window.open(urlimg,"_self");
+					
+					$("#div_buscar").toggle();
 					$('#embed_video').attr('src',urlimg);
-					$('#video_play').css("height", $( window ).height()-125);
+					$('#video_play').css("height", $( window ).height());
 					$("#video_play").show(500);
 			//		$('#infoEntidadImgA').attr('href',"javascript:imageAlert('"+urlimg+"')");		
 				}
@@ -109,7 +111,7 @@ function inicializar(){
 		nombre: 'lugaresoficiales',
 		titulo: 'Lugares oficiales', 
 		mapFile: '', 
-		icono: 'http://190.12.101.74/ais/alpi/files/icons_layers/lugaresoficiales.png',
+		icono: 'http://190.12.101.74/ais/ipeak/files/icons_layers/peek_play.png',
 		datasource: 1,
 		visible: true,
 		source: new ol.source.GeoJSON({
@@ -125,7 +127,7 @@ function inicializar(){
 						anchorXUnits: 'pixels',
 						anchorYUnits: 'pixels',
 						opacity: 0.90,
-						src: 'http://190.12.101.74/ais/alpi/files/icons_layers/lugaresoficiales.png'
+						src: 'http://190.12.101.74/ais/ipeak/files/icons_layers/peek_play.png'
 					}))
 				})];
 			}
