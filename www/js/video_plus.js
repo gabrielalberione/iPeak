@@ -81,14 +81,11 @@ navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
 
 
 function onSuccess(imageURI) {
-    var image = document.getElementById('myImage');
-    image.src = imageURI;
-	
 	var options = new FileUploadOptions();
 	options.chunkedMode = true;
 	options.fileKey="file";
-	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
-	options.mimeType="video/quicktime";
+	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+	options.mimeType="image/jpeg";
 	var params = {};
 	params.titulo = "prueba";	
 	params.layer_id = "2";
