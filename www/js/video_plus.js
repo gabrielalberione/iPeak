@@ -75,6 +75,15 @@ function subir_video(){
 }
 
 function envioTest(){
+navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.FILE_URI });
+}
+
+
+function onSuccess(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = imageURI;
+	
 	var options = new FileUploadOptions();
 	options.chunkedMode = true;
 	options.fileKey="file";
@@ -88,9 +97,13 @@ function envioTest(){
 	options.params = params;
 
 	var ft = new FileTransfer();
-	ft.upload("", encodeURI("http://190.12.101.74/ais/ipeak/ws/entidades/guardar"),
+	ft.upload(imageURI, encodeURI("http://190.12.101.74/ais/ipeak/ws/entidades/guardar"),
         uploadSuccess,
-        uploadFail, options);
+        uploadFail, options);	
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
 }
 
 function cancelar_video(){
