@@ -80,7 +80,7 @@ navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
 }
 
 
-function onSuccess(imageData) {
+function onSuccess(imageURI) {
     var image = document.getElementById('myImage');
     image.src = imageURI;
 	
