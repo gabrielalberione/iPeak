@@ -4,9 +4,10 @@ var overviewmapCtrol;
 var urlTile;
 var urlWMS;
 var mapFile;
+var urlGeoJson = 'http://190.12.101.74/ais/ipeak/ws/entidades/listar/2';
 
-var posActual = [-6504570.927285643, -4108000.5912273894];
-var posInicial = [-6504570.927285643, -4108000.5912273894];
+var posActual = [-6506141.183454158, -4110246.2464916063];
+var posInicial = [-6506141.183454158, -4110246.2464916063];
 var featurePosActual;
 
 var opClick = 0;
@@ -52,56 +53,84 @@ function inicializar(){
 		source: new ol.source.OSM()
 	});
 	
-	bingMaps = new ol.layer.Tile({
-		id: 'base_'+2,
-		name: 'bingMaps',
-		type: 'base',
-		title: 'Bing Maps',
-		visible: false,
-		source: new ol.source.BingMaps({
-			key: 'AiWOEQkUaequRY_hR9K9vBorMmutTibMfX6YMe4QPZj78A_7yaA-IiOPjngEO-Zb',
-			imagerySet: 'Road'})
-	});
-	
-	bingMapsSatelital = new ol.layer.Tile({
-		id: 'base_'+3,
-		name: 'bingMapsSatelital',
-		type: 'base',
-		title: 'Bing Satelital',
-		visible: false,
-		source: new ol.source.BingMaps({
-			key: 'AiWOEQkUaequRY_hR9K9vBorMmutTibMfX6YMe4QPZj78A_7yaA-IiOPjngEO-Zb',
-			imagerySet:'AerialWithLabels'})
-	});
-	
-	mapQuest = new ol.layer.Tile({
-		id: 'base_'+4,
-		name: 'watercolor',
-		type: 'base',
-		title: 'Map Quest',
-		visible: false,
-		source: new ol.source.MapQuest({layer: 'osm'})
-	});
-	
-	var layersBases = [osm, bingMaps, bingMapsSatelital, mapQuest];
+	var layersBases = [osm];
 	cantCapasBases = layersBases.length;
 	/* END crea los mapas bases */
 	
 	view = new ol.View({
 		center: posInicial,
-		zoom: 13
+		zoom: 11
 	});
 	/**/
 	
 	map = new ol.Map({
-		target: 'map',
+		target: 'map',		
 		layers: layersBases,
 		view: view
 	});
 	
-	map.on('click', function(evt) {
-		displayFeatureInfo(evt.pixel);
+	map.on('singleclick', function(evt) {
+		/* verifica si hay entidades en layers tipo vector GeoJSON */
+		map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
+			if ((layer.get('type') != 'base') && (layer.get('nombre') != 'vectorLyBusqueda') && (layer.get('nombre') != 'vectorLyDibujo')){
+				/*$('#infoEntidadTitulo').html(feature.get('nombre'));
+				$('#infoEntidadCopete').html(feature.get('rubro')+'<br>'+feature.get('calle')+' '+feature.get('altura'));
+				var htmlDetalle = "";
+				htmlDetalle += '<b>Tel.: </b>'+feature.get('telefono')+'<br>';
+				htmlDetalle += '<b>e-mail: </b>'+feature.get('email')+'<br>';
+				htmlDetalle += '<b>Web: </b>'+feature.get('web')+'<br>';
+				htmlDetalle += feature.get('descripcion')+'<br>';
+				$('#divInfoEntidadDetalle').html(htmlDetalle);*/
+				
+				var ms = feature.get('Multimedias');
+				//$('#infoEntidadImg').attr('src','./img/sinimagen.png');
+				//$('#infoEntidadImgA').attr('href',"javascript:imageAlert('./img/sinimagen.png')");
+				if (typeof ms[0] != 'undefined'){
+					var m = ms[0];
+					var urlimg = feature.get('MultimediasUrl')+m.Multimedia.codigo;
+			//		$('#infoEntidadImg').attr('src',urlimg);	
+					//alert();
+					//window.open(urlimg,"_self");
+					$("#video_play").show(500);
+					$('#embed_video').attr('src',urlimg);
+			//		$('#infoEntidadImgA').attr('href',"javascript:imageAlert('"+urlimg+"')");		
+				}
+			//	$("#divInfoEntidad").show(500);
+			}
+		});
 	});
+
+	var vectorLayer = new ol.layer.Vector({
+		id: 1,
+		type: 'overlay',
+		nombre: 'lugaresoficiales',
+		titulo: 'Lugares oficiales', 
+		mapFile: '', 
+		icono: 'iconos/peek_play.png',
+		datasource: 1,
+		visible: true,
+		source: new ol.source.GeoJSON({
+			projection: 'EPSG:3857',
+			url: urlGeoJson
+		}),
+		style: function(feature, resolution) {
+			var iconStyle = null;
+			if (true){ //(feature.get('icono') != null){
+				iconStyle = [new ol.style.Style({
+					image: new ol.style.Icon( ({
+						anchor: [16, 32],
+						anchorXUnits: 'pixels',
+						anchorYUnits: 'pixels',
+						opacity: 0.90,
+						src: 'iconos/peek_play.png'
+					}))
+				})];
+			}
+			return iconStyle;
+		}
+	});
+	
+	map.addLayer(vectorLayer);	
 	
 	view.setCenter(posInicial);
 };
@@ -132,7 +161,7 @@ function puntoGPS(xparam, yparam){
 		var iconStyle = new ol.style.Style({
 			image: new ol.style.Icon(({
 				opacity: 0.75,
-				src: urlFiles+'iconos/mi_ballon.png'
+				src: 'iconos/mi_ballon.png'
 			}))
 		});
 		

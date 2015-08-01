@@ -33,20 +33,20 @@
         right: 18px;
         display: none;
     }
-    
+	
     img { display:inline;}
     </style>
     <div data-snap-ignore="true">
     
-        <div id="div_buscar" style="z-index: 1000; float: left; 
+        <div id="div_buscar" style="z-index: 10s00; float: left; 
         	position: absolute; top: 10px; width: 100%; text-align: center;">
             <input type="search" class="input_buscador" placeholder="buscar..." />
         </div>
         
         <div style="z-index: 1000; float: left; 
         	position: absolute; bottom: 5px; width: 100%; text-align: center;">
-            <!--<button type="button" class="btn btn-primary boton_upload" onclick="videoCapturePlus(false,true,5)">-->
-            <button type="button" class="btn btn-primary boton_upload" onclick="envioTest()">
+            <button type="button" class="btn btn-primary boton_upload" onclick="videoCapturePlus(false,true,5)">
+            <!--<button type="button" class="btn btn-primary boton_upload" onclick="envioTest()">-->
                 <img src="img/peek.png" style="height: 40px;">
             </button>
         </div>        
@@ -71,6 +71,16 @@
                 </button>            	
             </div>
         </div>
+        
+       <div id="video_play" style="display:block; z-index:2005;">
+           <video width="700" height="450" controls="controls" poster="image" preload="true">
+             <source src="where the video is" type="http://190.12.101.74/ais/ipeak/files/multimedias/5.MOV"/>
+             Your browser does not support the video tag.
+           </video>             
+            <button type="button" class="btn btn-success verde_transparente" style="width:120px; z-index:3000;" onclick="subir_video()">
+                   	Subir
+            </button>    
+       </div>
     
         <div id="map" style="width:100%;height:100%;"></div>
     </div>
