@@ -31,7 +31,6 @@ $( document ).ready( function() {
 	//navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);  
     var watchID = navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS, { timeout: 3000, enableHighAccuracy: true  });
 	//$("video_play").height($("body").height());
-	$('#video_play').css("height", $( window ).height());
 });
 $( window ).resize( function() { 
 	$('#map').css("height", $( window ).height());
@@ -94,8 +93,9 @@ function inicializar(){
 			//		$('#infoEntidadImg').attr('src',urlimg);	
 					//alert();
 					//window.open(urlimg,"_self");
-					$("#video_play").show(500);
 					$('#embed_video').attr('src',urlimg);
+					$('#video_play').css("height", $( window ).height()-125);
+					$("#video_play").show(500);
 			//		$('#infoEntidadImgA').attr('href',"javascript:imageAlert('"+urlimg+"')");		
 				}
 			//	$("#divInfoEntidad").show(500);
@@ -109,7 +109,7 @@ function inicializar(){
 		nombre: 'lugaresoficiales',
 		titulo: 'Lugares oficiales', 
 		mapFile: '', 
-		icono: 'iconos/peek_play.png',
+		icono: 'http://190.12.101.74/ais/alpi/files/icons_layers/lugaresoficiales.png',
 		datasource: 1,
 		visible: true,
 		source: new ol.source.GeoJSON({
@@ -125,7 +125,7 @@ function inicializar(){
 						anchorXUnits: 'pixels',
 						anchorYUnits: 'pixels',
 						opacity: 0.90,
-						src: 'iconos/peek_play.png'
+						src: 'http://190.12.101.74/ais/alpi/files/icons_layers/lugaresoficiales.png'
 					}))
 				})];
 			}
