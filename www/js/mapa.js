@@ -97,10 +97,11 @@ function inicializar(){
 					$("#div_peek").toggle();
 					$("#div_buscar").toggle();
 					$("#boton_mi_posicion").toggle();
-					$("#botones_play").toggle();					
+					$("#reproductor_botones").toggle();		
+					$("#reproductor_tiempo").toggle();			
 					$('#embed_video').attr('src',urlimg);
-					$('#video_play').css("height", $( window ).height()-60);
-					$("#video_play").show(500);
+					$('#reproductor').css("height", $( window ).height()-60);
+					$("#reproductor").show();
 			//		$('#infoEntidadImgA').attr('href',"javascript:imageAlert('"+urlimg+"')");		
 				}
 			//	$("#divInfoEntidad").show(500);

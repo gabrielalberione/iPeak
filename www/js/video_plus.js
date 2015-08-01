@@ -112,8 +112,9 @@ function salir_video(){
 	$("#div_peek").toggle();
 	$("#div_buscar").toggle();
 	$("#boton_mi_posicion").toggle();
-	$("#botones_play").toggle();	
-	$("#video_play").toggle();
+	$("#reproductor_botones").toggle();	
+	$("#reproductor").toggle();
+	$("#reproductor_tiempo").toggle();
 }
 
 function uploadSuccess(r){

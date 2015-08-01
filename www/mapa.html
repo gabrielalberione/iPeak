@@ -61,6 +61,23 @@
                     Seguir
                 </button>                         
            </div>
+        </div>   
+        
+        <div id="reproductor_tiempo" style="display: none; z-index: 1000; float: left; 
+        	position: absolute; top: 20px; width: 100%; text-align: right; padding-right: 20px;">
+        	<p style="font-size: 18px; color:#CA5B5B;"><i class="fa fa-clock-o" style="margin-right: 5px;"></i>28 '</p>
+        </div>
+        
+        <div id="reproductor_botones" style="display: none; z-index: 1000; float: left; 
+        	position: absolute; bottom: 0px; width: 100%; text-align: center;  padding: 20px; background-color:#FFF;">
+            <div style="text-align: center; z-index:3000;"> 
+                <button type="button" class="btn btn-danger rojo_transparente" style="width:120px; margin-right: 15px;" onclick="salir_video()">
+                    Volver
+                </button>            	
+                <button type="button" class="btn btn-info" style="width:120px;">
+                    Seguir
+                </button>                         
+           </div>
         </div>     
        
         <div id="boton_mi_posicion" class="btn-group" style="z-index:1000; float:right; position:absolute; bottom:10px; right:10px">
@@ -84,7 +101,7 @@
             </div>
         </div>
         
-       <div id="video_play" style="display:none; z-index:-1;">
+       <div id="reproductor" style="display:none; z-index:-1;">
            <object>
                 <param name="wmode" value="transaprent"></param>
             	<embed id="embed_video" quality="best" scale="exactfit" height="100%" width="100%" src="http://190.12.101.74/ais/ipeak/files/multimedias/5.MOV"/>
