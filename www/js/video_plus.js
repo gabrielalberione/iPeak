@@ -109,6 +109,10 @@ function cancelar_video(){
 
 function salir_video(){
 	$("#div_buscar").toggle();
+	$("#div_peek").toggle();
+	$("#div_buscar").toggle();
+	$("#boton_mi_posicion").toggle();
+	$("#botones_play").toggle();	
 	$("#video_play").toggle();
 }
 

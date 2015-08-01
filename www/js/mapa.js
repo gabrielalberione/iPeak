@@ -96,7 +96,9 @@ function inicializar(){
 					
 					$("#div_buscar").toggle();
 					$("#div_peek").toggle();
-					$("#div_buscar").toggle();					
+					$("#div_buscar").toggle();
+					$("#boton_mi_posicion").toggle();
+					$("#botones_play").toggle();					
 					$('#embed_video').attr('src',urlimg);
 					$('#video_play').css("height", $( window ).height());
 					$("#video_play").show(500);
