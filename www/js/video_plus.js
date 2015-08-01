@@ -74,6 +74,25 @@ function subir_video(){
         uploadFail, options);
 }
 
+function envioTest(){
+	var options = new FileUploadOptions();
+	options.chunkedMode = true;
+	options.fileKey="file";
+	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
+	options.mimeType="video/quicktime";
+	var params = {};
+	params.titulo = "prueba";	
+	params.layer_id = "2";
+	var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
+	params.geom = "POINT("+pos4326[0]+" "+pos4326[1]+")";	
+	options.params = params;
+
+	var ft = new FileTransfer();
+	ft.upload("", encodeURI("http://190.12.101.74/ais/ipeak/ws/entidades/guardar"),
+        uploadSuccess,
+        uploadFail, options);
+}
+
 function cancelar_video(){
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
 }
