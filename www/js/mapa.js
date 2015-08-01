@@ -94,7 +94,6 @@ function inicializar(){
 					//alert();
 					//window.open(urlimg,"_self");
 					
-					$("#div_buscar").toggle();
 					$("#div_peek").toggle();
 					$("#div_buscar").toggle();
 					$("#boton_mi_posicion").toggle();
