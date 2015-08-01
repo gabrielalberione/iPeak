@@ -35,6 +35,8 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+	    <allow-intent href="http://*/*" />
+	    <allow-intent href="https://*/*" />
     </platform>	
 	<preference name="iosPersistentFileLocation" value="Library" />	
 	<preference name="iosPersistentFileLocation" value="Compatibility" />	

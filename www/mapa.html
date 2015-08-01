@@ -38,7 +38,7 @@
     </style>
     <div data-snap-ignore="true">
     
-        <div id="div_buscar" style="z-index: 10s00; float: left; 
+        <div id="div_buscar" style="z-index: 1000; float: left; 
         	position: absolute; top: 10px; width: 100%; text-align: center;">
             <input type="search" class="input_buscador" placeholder="buscar..." />
         </div>
@@ -72,13 +72,11 @@
             </div>
         </div>
         
-       <div id="video_play" style="display:none; z-index:2005; height: 500px;">
+       <div id="video_play" style="display:none; z-index:2005;">
            <object>
+                <param name="wmode" value="transaprent"></param>
             	<embed id="embed_video" quality="best" scale="exactfit" height="100%" width="100%" src="http://190.12.101.74/ais/ipeak/files/multimedias/5.MOV"/>
-           </object>            
-            <button type="button" class="btn btn-success verde_transparente" style="width:120px; z-index:3000; float:left; position:absolute; top:0px;" onclick="subir_video()">
-                   	Subir
-            </button>    
+           </object>             
        </div>
     
         <div id="map" style="width:100%;height:100%;"></div>
