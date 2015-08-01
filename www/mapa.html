@@ -72,12 +72,11 @@
             </div>
         </div>
         
-       <div id="video_play" style="display:block; z-index:2005;">
-           <video width="700" height="450" controls="controls" poster="image" preload="true">
-             <source src="where the video is" type="http://190.12.101.74/ais/ipeak/files/multimedias/5.MOV"/>
-             Your browser does not support the video tag.
-           </video>             
-            <button type="button" class="btn btn-success verde_transparente" style="width:120px; z-index:3000;" onclick="subir_video()">
+       <div id="video_play" style="display:none; z-index:2005; height: 500px;">
+           <object>
+            	<embed id="embed_video" quality="best" scale="exactfit" height="100%" width="100%" src="http://190.12.101.74/ais/ipeak/files/multimedias/5.MOV"/>
+           </object>            
+            <button type="button" class="btn btn-success verde_transparente" style="width:120px; z-index:3000; float:left; position:absolute; top:0px;" onclick="subir_video()">
                    	Subir
             </button>    
        </div>

@@ -30,9 +30,12 @@ $( document ).ready( function() {
 	inicializar(); 
 	//navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);  
     var watchID = navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS, { timeout: 3000, enableHighAccuracy: true  });
+	//$("video_play").height($("body").height());
+	$('#video_play').css("height", $( window ).height());
 });
 $( window ).resize( function() { 
 	$('#map').css("height", $( window ).height());
+	$('#video_play').css("height", $( window ).height());
 	map.updateSize();
 });
 
