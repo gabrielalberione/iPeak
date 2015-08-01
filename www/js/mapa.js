@@ -95,6 +95,8 @@ function inicializar(){
 					//window.open(urlimg,"_self");
 					
 					$("#div_buscar").toggle();
+					$("#div_peek").toggle();
+					$("#div_buscar").toggle();					
 					$('#embed_video').attr('src',urlimg);
 					$('#video_play').css("height", $( window ).height());
 					$("#video_play").show(500);
