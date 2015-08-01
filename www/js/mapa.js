@@ -99,7 +99,7 @@ function inicializar(){
 					$("#boton_mi_posicion").toggle();
 					$("#botones_play").toggle();					
 					$('#embed_video').attr('src',urlimg);
-					$('#video_play').css("height", $( window ).height());
+					$('#video_play').css("height", $( window ).height()-60);
 					$("#video_play").show(500);
 			//		$('#infoEntidadImgA').attr('href',"javascript:imageAlert('"+urlimg+"')");		
 				}
