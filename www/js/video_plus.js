@@ -107,14 +107,14 @@ function cancelar_video(){
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
 }
 
-function salir_video(){
-	$("#div_buscar").toggle();
+function salir_video(){	
 	$("#div_peek").toggle();
 	$("#div_buscar").toggle();
 	$("#boton_mi_posicion").toggle();
 	$("#reproductor_botones").toggle();	
 	$("#reproductor").toggle();
 	$("#reproductor_tiempo").toggle();
+	$("#div_buscar").toggle();
 }
 
 function uploadSuccess(r){

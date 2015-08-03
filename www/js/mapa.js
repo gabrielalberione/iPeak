@@ -90,18 +90,14 @@ function inicializar(){
 				if (typeof ms[0] != 'undefined'){
 					var m = ms[0];
 					var urlimg = feature.get('MultimediasUrl')+m.Multimedia.codigo;
+					window.localStorage.setItem("link_video", urlimg);
+					window.open("video.html","_self");	
 			//		$('#infoEntidadImg').attr('src',urlimg);	
 					//alert();
-					//window.open(urlimg,"_self");
-					
-					$("#div_peek").toggle();
-					$("#div_buscar").toggle();
-					$("#boton_mi_posicion").toggle();
-					$("#reproductor_botones").toggle();		
-					$("#reproductor_tiempo").toggle();			
+					//
 					$('#embed_video').attr('src',urlimg);
 					$('#reproductor').css("height", $( window ).height()-60);
-					$("#reproductor").show();
+					$("#reproductor").show();*/
 			//		$('#infoEntidadImgA').attr('href',"javascript:imageAlert('"+urlimg+"')");		
 				}
 			//	$("#divInfoEntidad").show(500);
