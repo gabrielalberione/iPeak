@@ -30,11 +30,9 @@ $( document ).ready( function() {
 	inicializar(); 
 	//navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);  
     var watchID = navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS, { timeout: 3000, enableHighAccuracy: true  });
-	//$("video_play").height($("body").height());
 });
 $( window ).resize( function() { 
 	$('#map').css("height", $( window ).height());
-	$('#video_play').css("height", $( window ).height());
 	map.updateSize();
 });
 
@@ -61,7 +59,7 @@ function inicializar(){
 	
 	view = new ol.View({
 		center: posInicial,
-		zoom: 11
+		zoom: 16
 	});
 	/**/
 	
@@ -95,9 +93,9 @@ function inicializar(){
 			//		$('#infoEntidadImg').attr('src',urlimg);	
 					//alert();
 					//
-					$('#embed_video').attr('src',urlimg);
-					$('#reproductor').css("height", $( window ).height()-60);
-					$("#reproductor").show();*/
+					//$('#embed_video').attr('src',urlimg);
+					//$('#reproductor').css("height", $( window ).height()-60);
+					//$("#reproductor").show();
 			//		$('#infoEntidadImgA').attr('href',"javascript:imageAlert('"+urlimg+"')");		
 				}
 			//	$("#divInfoEntidad").show(500);

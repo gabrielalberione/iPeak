@@ -69,6 +69,10 @@ body {
 		function salir_video(){
 			window.open("mapa.html","_self");	
 		}
+		$( window ).resize( function() { 
+			$('#video_play').css("height", $( window ).height());
+		});
+
 	</script>
 </body>
 </html>
