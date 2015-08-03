@@ -33,14 +33,17 @@ body {
        </object>
    </div>
     <div id="botones_play" style=" z-index: 1000; float: left; 
-        position: absolute; bottom: 0px; width: 100%; text-align: center;  padding: 20px; background-color:#FFF;">
+        position: absolute; bottom: 0px; width: 100%; text-align: center;  padding: 20px; background-color:#e5e5e5;">
         <div style="text-align: center; z-index:3000;"> 
-            <button type="button" class="btn btn-danger rojo_transparente" style="width:120px; margin-right: 15px;" onclick="salir_video()">
-                Volver
+            <button type="button" class="btn btn-danger btn-reproductor" onclick="salir_video()">
+                <img src="img/volver.png">
             </button>            	
-            <button type="button" class="btn btn-info" style="width:120px;">
-                Seguir
-            </button>                         
+            <button type="button" class="btn btn-info btn-reproductor">
+                <img src="img/seguir.png">
+            </button>  
+            <button type="button" class="btn btn-info btn-reproductor">
+                <img src="img/mas_tiempo.png">
+            </button>                           
        </div>
     </div>   
     
@@ -48,24 +51,15 @@ body {
         position: absolute; top: 20px; right: 20px; text-align: right; border-radius:20px; padding: 10px 10px 0px 10px;background-color:#FFF;">
         <p style="font-size: 18px; color:#CA5B5B;"><i class="fa fa-clock-o" style="margin-right: 5px;"></i>28 '</p>
     </div>
-    
-    <div id="reproductor_botones" style="display: none; z-index: 1000; float: left; 
-        position: absolute; bottom: 0px; width: 100%; text-align: center;  padding: 20px; background-color:#FFF;">
-        <div style="text-align: center; z-index:3000;"> 
-            <button type="button" class="btn btn-danger rojo_transparente" style="width:120px; margin-right: 15px;" onclick="salir_video()">
-                Volver
-            </button>            	
-            <button type="button" class="btn btn-info" style="width:120px;">
-                Seguir
-            </button>                         
-       </div>
-    </div>  
+    <script type="text/javascript" src="js/jquery.js"></script>		
     <script>
-		var link_video = window.localStorage.getItem("link_video");
-		if(link_video != null){
-			$('#embed_video').attr('src',link_video);
-			$('#reproductor').css("height", $( window ).height()-60);
-		}
+		$( document ).ready( function() { 
+			var link_video = window.localStorage.getItem("link_video");
+			if(link_video != null){
+				$('#embed_video').attr('src',link_video);
+				$('#reproductor').css("height", $( window ).height()-60);
+			}
+		});
 		function salir_video(){
 			window.open("mapa.html","_self");	
 		}

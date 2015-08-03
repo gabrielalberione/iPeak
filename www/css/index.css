@@ -219,3 +219,20 @@ h1 {
 	border-color: #B85254;
 	color: #fff;
 }
+
+.btn-reproductor{
+	background-color: #fff;
+	border-color: #fff;
+	margin: 0px 10px;
+	padding: 5px 25px;
+}
+
+.btn-reproductor:hover{
+	background-color: #B85254;
+	border-color: #B85254;
+	color: #fff;
+}
+
+.btn-reproductor img{
+	max-width: 32px;
+}
