@@ -25,8 +25,17 @@ var osm = null; // OpenStreetMap
 var mapQuest = null; // mapQuest
 var bingMapsSatelital = null;
 var bingMaps = null;
+var banPrimeraVez = true;
 
 $( document ).ready( function() { 
+	var lat_video = parseFloat(window.localStorage.getItem("lat_video"));
+	var long_video = parseFloat(window.localStorage.getItem("long_video"));
+	if((lat_video != null) && (long_video != null)){
+		posInicial = [lat_video, long_video];
+		posActual = [lat_video, long_video];
+		window.localStorage.setItem("lat_video", "-6506141.183454158");
+		window.localStorage.setItem("long_video", "-4110246.2464916063");		
+	}		
 	inicializar(); 
 	//navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);  
     var watchID = navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS, { timeout: 3000, enableHighAccuracy: true  });
@@ -88,7 +97,10 @@ function inicializar(){
 				if (typeof ms[0] != 'undefined'){
 					var m = ms[0];
 					var urlimg = feature.get('MultimediasUrl')+m.Multimedia.codigo;
+					var lonlat = map.getCoordinateFromPixel(evt.pixel);
 					window.localStorage.setItem("link_video", urlimg);
+					window.localStorage.setItem("lat_video", lonlat[0]);
+					window.localStorage.setItem("long_video", lonlat[1]);
 					window.open("video.html","_self");	
 			//		$('#infoEntidadImg').attr('src',urlimg);	
 					//alert();
@@ -171,6 +183,11 @@ function puntoGPS(xparam, yparam){
 		featurePosActual.setStyle(iconStyle);
 	} else {
 		featurePosActual.setGeometry(new ol.geom.Point([x,y]));
+	}
+	
+	if(banPrimeraVez){
+		banPrimeraVez = false;
+		centrarMiPosicion();
 	}
 
 }
