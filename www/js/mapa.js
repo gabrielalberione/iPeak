@@ -39,6 +39,9 @@ $( document ).ready( function() {
 	inicializar(); 
 	//navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS);  
     var watchID = navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS, { timeout: 3000, enableHighAccuracy: true  });
+	setInterval(function() {
+    	refrescarMapa();
+	}, 10000);
 });
 $( window ).resize( function() { 
 	$('#map').css("height", $( window ).height());
@@ -194,4 +197,27 @@ function puntoGPS(xparam, yparam){
 
 function centrarMiPosicion(){
     view.setCenter([posActual[0],posActual[1]]);
+}
+
+function refrescarMapa(){
+	var layers = map.getLayers().getArray();
+	for(i=0; i < layers.length; i++){
+		var ly = layers[i];
+		if (ly.get('datasource') == 0){ // WMS interno
+		/* puede que updateParams no exista, es por ello el try */
+		try {
+			ly.getSource().updateParams({time_: (new Date()).getTime()});
+		} catch(err) { 
+		//console.log(ly.get('nombre'));
+		//console.log(err);
+		}
+		
+		} else if (ly.get('datasource') == 1){ // Geojson
+			ly.getSource().clear();
+			ly.setSource(new ol.source.GeoJSON({
+				projection: 'EPSG:3857',
+				url: urlGeoJson
+			}));
+		}
+	}
 }
