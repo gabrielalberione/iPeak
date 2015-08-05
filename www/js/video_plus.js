@@ -50,8 +50,8 @@ function subir_video(){
 	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
 	options.mimeType="video/quicktime";
 	var params = {};
-	params.nombre = $("#video_nombre").val();	
-	params.tags = $("#video_tags").val();
+	//params.nombre = $("#video_nombre").val();	
+	//params.tags = $("#video_tags").val();
 	params.layer_id = "2";
 	var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
 	params.geom = "POINT("+pos4326[0]+" "+pos4326[1]+")";	
