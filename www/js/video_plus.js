@@ -17,26 +17,14 @@ function videoCapturePlus(highquality, frontcamera, duration) {
 }
 var videoUri = "";
 function captureSuccess(mediaFiles) {
-  document.getElementById('pluginsDemoDiv').style.display = 'block';
-  var i, len;
-  for (i = 0, len = mediaFiles.length; i < len; i++) {
-    var mediaFile = mediaFiles[i];
-    mediaFile.getFormatData(getFormatDataSuccess, getFormatDataError);
-
-    var vid = document.createElement('video');
-    vid.id = "theVideo";
-    vid.width = "240";
-    vid.height = "160";
-    vid.controls = "controls";
-    var source_vid = document.createElement('source');
-    source_vid.id = "theSource";
-    source_vid.src = mediaFile.fullPath;
-	videoUri = mediaFile.fullPath; 
-    vid.appendChild(source_vid);
-    document.getElementById('video_container').innerHTML = '';
-    document.getElementById('video_container').appendChild(vid);
-    document.getElementById('video_meta_container2').innerHTML = parseInt(mediaFile.size / 1000) + 'KB ' + mediaFile.type;
-  }
+	var i, len;
+	for (i = 0, len = mediaFiles.length; i < len; i++) {
+		var mediaFile = mediaFiles[i];
+		mediaFile.getFormatData(getFormatDataSuccess, getFormatDataError);
+		videoUri = mediaFile.fullPath; 
+		window.localStorage.setItem("videoUri", videoUri);
+	}
+	window.open("subir_video.html","_self");
 }
 
 function getFormatDataSuccess(mediaFileData) {
@@ -53,12 +41,12 @@ function getFormatDataError(error) {
 }
 
 function subir_video(){	
-	document.getElementById('pluginsDemoDiv').style.display = 'none';
     var splashLoading = document.getElementById('splashLoading');
 	splashLoading.style.display = 'block';		
 	var options = new FileUploadOptions();
 	options.chunkedMode = true;
 	options.fileKey="file";
+	videoUri = window.localStorage.getItem("videoUri");
 	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
 	options.mimeType="video/quicktime";
 	var params = {};
@@ -107,24 +95,11 @@ function cancelar_video(){
 	document.getElementById('pluginsDemoDiv').style.display = 'none';
 }
 
-function salir_video(){	
-	$("#div_peek").toggle();
-	$("#div_buscar").toggle();
-	$("#boton_mi_posicion").toggle();
-	$("#reproductor_botones").toggle();	
-	$("#reproductor").toggle();
-	$("#reproductor_tiempo").toggle();
-	$("#div_buscar").toggle();
-}
-
 function uploadSuccess(r){
-    var splashLoading = document.getElementById('splashLoading');
-	splashLoading.style.display = 'none';	
-	console.log(r);
+	alert("Se ha compartido tu video!");
+	window.open("mapa.html","_self");
 }
 
 function uploadFail(error){
-    var splashLoading = document.getElementById('splashLoading');
-	splashLoading.style.display = 'none';		
-	alert("NO!");	
+	alert("No se pudo subir el video: "+error);
 }

@@ -15,11 +15,6 @@
 	<script src="http://debug.build.phonegap.com/target/target-script-min.js#cde8d38e-2be8-11e5-9692-22000b848544"></script>    
 </head>
 <body>
-     <div class="spinner" style="display: none;" id="splashLoading">
-          <div class="cube1"></div>
-          <div class="cube2"></div>
-          <p style="top: 56%; left: 41%; color: rgb(255, 255, 255); position: absolute;"><b>Subiendo...</b></p>
-        </div>
 	<style>
     .ol-zoom{
         display: none;
@@ -36,104 +31,6 @@
 	
     img { display:inline;}
     </style>
-        <style>
-            /* CSS code icons from http://codepen.io/jthiller/pen/icDtL */
-            .circleOut {
-              position: relative;
-              margin: 0 auto;
-              padding: 0;
-              width: 0;
-              height: 0;
-            }
-            .circleOut:before {
-              position: relative;
-              top: -.8em;
-              left: -1em;
-              display: block;
-              -moz-box-sizing: border-box;
-                   box-sizing: border-box;
-              margin: 0 auto;
-              width: 2em;
-              height: 2em;
-              border: 0.5em solid #FA8258;              
-              border-radius: 100%;
-              content: "";
-              -webkit-transform-origin: center;
-                  -ms-transform-origin: center;
-                      transform-origin: center;
-              -webkit-animation-name: fadeOut;
-                      animation-name: fadeOut;
-              -webkit-animation-duration: 1s;
-                      animation-duration: 1s;
-              -webkit-animation-timing-function: ease-in-out;
-                      animation-timing-function: ease-in-out;
-              -webkit-animation-delay: -1s;
-                      animation-delay: -1s;
-              -webkit-animation-iteration-count: infinite;
-                      animation-iteration-count: infinite;
-              -webkit-animation-direction: forwards;
-                      animation-direction: forwards;
-            }
-            .circleOut:after {
-              position: absolute;
-              top: -.8em;
-              left: -1em;
-              display: block;
-              -moz-box-sizing: border-box;
-                   box-sizing: border-box;
-              margin: 0 auto;
-              width: 2em;
-              height: 2em;
-              border: 0.2em solid #FA8258;
-              border-radius: 100%;
-              content: "";
-              -webkit-transform-origin: center;
-                  -ms-transform-origin: center;
-                      transform-origin: center;
-              -webkit-animation-name: fadeOut;
-                      animation-name: fadeOut;
-              -webkit-animation-duration: 1s;
-                      animation-duration: 1s;
-              -webkit-animation-timing-function: ease;
-                      animation-timing-function: ease;
-              -webkit-animation-delay: -.5s;
-                      animation-delay: -.5s;
-              -webkit-animation-iteration-count: infinite;
-                      animation-iteration-count: infinite;
-              -webkit-animation-direction: forwards;
-                      animation-direction: forwards;
-            }
-
-            @-webkit-keyframes fadeOut {
-              0% {
-                -webkit-transform: scale(0);
-                        transform: scale(0);
-              }
-              50% {
-                opacity: 1;
-              }
-              100% {
-                -webkit-transform: scale(1);
-                        transform: scale(1);
-                opacity: 0;
-              }
-            }
-
-            @keyframes fadeOut {
-              0% {
-                -webkit-transform: scale(0);
-                        transform: scale(0);
-              }
-              50% {
-                opacity: 1;
-              }
-              100% {
-                -webkit-transform: scale(1);
-                        transform: scale(1);
-                opacity: 0;
-              }
-            }
-        </style>    
     <div data-snap-ignore="true">
     
         <div id="div_buscar" style="z-index: 1000; float: left; 
@@ -148,28 +45,10 @@
                 <img src="img/peek.png" style="height: 40px;">
             </button>
         </div>   
-       
-       
+             
         <div id="boton_mi_posicion" class="btn-group" style="z-index:1000; float:right; position:absolute; bottom:10px; right:10px">
             <button type="button" class="btn btn-primary btn_blanco" onclick="centrarMiPosicion()"><em class="fa fa-crosshairs"></em></button>
-        </div>    
-        <div id="pluginsDemoDiv" style="display: none; z-index:2000; width: 100%;  
-        float:right; position:absolute; top:70px; text-align: center; background-color: #FFF; border-radius: 20px; padding: 15px;">    
-            <div id="video_meta_container" style="margin: auto; display:none;"></div>
-            <div id="video_meta_container2" style="margin: auto; display:none;"></div>
-            <div id="video_container" style="margin: auto; text-align: center;"></div>
-            <div id="video_container" style="margin: 10px 50px; text-align: center;">
-            <input type="text" class="form-control" id="video_nombre" placeholder="Introduce un nombre">
-            </div>
-            <div id="video_botones" style="text-align: center;">
-                <button type="button" class="btn btn-danger rojo_transparente" style="width:120px;" onclick="cancelar_video()">
-                    Cancelar
-                </button>            	
-                <button type="button" class="btn btn-success verde_transparente" style="width:120px;" onclick="subir_video()">
-                   	Subir
-                </button>            	
-            </div>
-        </div>
+        </div>           
     
         <div id="map" style="width:100%;height:100%;"></div>
     </div>

@@ -1,34 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8"/>
-  <meta name="format-detection" content="telephone=no"/>
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css"/>
-  <title>Hello VideoCapturePlus</title>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ol.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <title>Hello VideoCapturePlus</title>
 </head>
 <body>
-<div>
-  <div id="pluginsDemoDiv">
-    <p>
-      <button onclick="videoCapturePlus(false,false,2)">LQ back 2s</button>
-      <br/><br/>
-      <button onclick="videoCapturePlus(true,false,3)">HQ back 3s</button>
-      <br/><br/>
-      <button onclick="videoCapturePlus(false,true,4)">LQ front 4s</button>
-      <br/><br/>
-      <button onclick="videoCapturePlus(true,true,5)">HQ front 5s</button>
-    </p>
-    <div id="video_meta_container"></div>
-    <div id="video_meta_container2"></div>
-    <div id="video_container"></div>
-  </div>
-</div>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/video_plus.js"></script>
-<script type="text/javascript">
-  app.initialize();
-</script>
+   <style>
+        /* CSS code icons from http://codepen.io/jthiller/pen/icDtL */
+        .circleOut {
+          position: relative;
+          margin: 0 auto;
+          padding: 0;
+          width: 0;
+          height: 0;
+        }
+        .circleOut:before {
+          position: relative;
+          top: -.8em;
+          left: -1em;
+          display: block;
+          -moz-box-sizing: border-box;
+               box-sizing: border-box;
+          margin: 0 auto;
+          width: 2em;
+          height: 2em;
+          border: 0.5em solid #FA8258;              
+          border-radius: 100%;
+          content: "";
+          -webkit-transform-origin: center;
+              -ms-transform-origin: center;
+                  transform-origin: center;
+          -webkit-animation-name: fadeOut;
+                  animation-name: fadeOut;
+          -webkit-animation-duration: 1s;
+                  animation-duration: 1s;
+          -webkit-animation-timing-function: ease-in-out;
+                  animation-timing-function: ease-in-out;
+          -webkit-animation-delay: -1s;
+                  animation-delay: -1s;
+          -webkit-animation-iteration-count: infinite;
+                  animation-iteration-count: infinite;
+          -webkit-animation-direction: forwards;
+                  animation-direction: forwards;
+        }
+        .circleOut:after {
+          position: absolute;
+          top: -.8em;
+          left: -1em;
+          display: block;
+          -moz-box-sizing: border-box;
+               box-sizing: border-box;
+          margin: 0 auto;
+          width: 2em;
+          height: 2em;
+          border: 0.2em solid #FA8258;
+          border-radius: 100%;
+          content: "";
+          -webkit-transform-origin: center;
+              -ms-transform-origin: center;
+                  transform-origin: center;
+          -webkit-animation-name: fadeOut;
+                  animation-name: fadeOut;
+          -webkit-animation-duration: 1s;
+                  animation-duration: 1s;
+          -webkit-animation-timing-function: ease;
+                  animation-timing-function: ease;
+          -webkit-animation-delay: -.5s;
+                  animation-delay: -.5s;
+          -webkit-animation-iteration-count: infinite;
+                  animation-iteration-count: infinite;
+          -webkit-animation-direction: forwards;
+                  animation-direction: forwards;
+        }
+
+        @-webkit-keyframes fadeOut {
+          0% {
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            opacity: 0;
+          }
+        }
+
+        @keyframes fadeOut {
+          0% {
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            opacity: 0;
+          }
+        }
+    </style>    
+    <div class="spinner" style="display: none;" id="splashLoading">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+        <p style="top: 56%; left: 41%; color: rgb(255, 255, 255); position: absolute;"><b>Subiendo...</b></p>
+    </div>
+    <div id="pluginsDemoDiv" style="width: 100%; text-align: center; background-color: #FFF; border-radius: 20px; padding: 15px;">    
+        <div id="video_meta_container" style="margin: auto; display:none;"></div>
+        <div id="video_meta_container2" style="margin: auto; display:none;"></div>
+        <div id="video_container" style="margin: auto; text-align: center;"></div>
+        <div id="video_container" style="margin: 10px 50px; text-align: center;">
+        <input type="text" class="form-control" id="video_nombre" placeholder="Introduce un nombre">
+        <input type="text" style="margin-top: 15px;" class="form-control" id="video_tags" placeholder="Introduce tus tags: video, ejemplo">
+        </div>
+        <div id="video_botones" style="text-align: center; margin-top: 15px;">
+            <button type="button" class="btn btn-danger rojo_transparente" style="width:120px;" onclick="cancelar_video()">
+                Cancelar
+            </button>            	
+            <button type="button" class="btn btn-success verde_transparente" style="width:120px;" onclick="subir_video()">
+                Subir
+            </button>            	
+        </div>
+    </div>
+
+	<script type="text/javascript" src="js/video_plus.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>		
+    <script>
+		$( document ).ready( function() { 
+			var link_video = window.localStorage.getItem("videoUri");
+			var vid = document.createElement('video');
+			vid.id = "theVideo";
+			vid.width = "240";
+			vid.height = "160";
+			vid.controls = "controls";
+			var source_vid = document.createElement('source');
+			source_vid.id = "theSource";
+			source_vid.src = link_video;
+			vid.appendChild(source_vid);
+			document.getElementById('video_container').innerHTML = '';
+			document.getElementById('video_container').appendChild(vid);
+			document.getElementById('video_meta_container2').innerHTML = parseInt(mediaFile.size / 1000) + 'KB ' + mediaFile.type;
+			});
+	</script>
 </body>
 </html>
