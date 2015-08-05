@@ -28,10 +28,10 @@
     
     <script type="text/javascript">
     $('#divResultadoBusqueda').html('<div class="alert alert-info" role="alert">Buscando...</div>');
-    if ($('#inputBusqueda').val().length > 2){
+    if ($('#inputBusqueda').val().length > -1){
 		var urlHost = 'http://190.12.101.74/ais/ipeak';
         var condicion = " nombre iLIKE '%test%' ";
-        $.getJSON( urlHost+"/ws/entidades/listar/4",{busqueda:condicion}, function( data ) {
+        $.getJSON( urlHost+"/ws/entidades/listar/2",{busqueda:condicion}, function( data ) {
             var items = [];
             $.each( data.features, function( key, val ) {
                 var feature = data.features[key];

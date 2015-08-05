@@ -61,19 +61,18 @@
     <script type="text/javascript" src="js/ol.js"></script>	
     <script type="text/javascript" src="js/mapa.js"></script>
 	<script type="text/javascript" src="js/video_plus.js"></script>   
-	<script>
+	<script type="text/javascript">
 		(function($) {
 			$(document).ready(function() {
 				$("#inputBusqueda").on( "keydown", function(event) {
-				  if(event.which == 13) 
-				  	alert("hola");
+			      if(event.which == 13) 
 					realizarBusqueda();
-				})
+				});
 			});
-		});
+		}) (jQuery);
 		
 		function realizarBusqueda(){
-			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
+			$("#divAjaxResultadoBusqueda").load("./resultado.html");
 		}
 	</script>     
 </body>

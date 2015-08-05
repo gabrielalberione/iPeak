@@ -46,8 +46,9 @@ function subir_video(){
 	var options = new FileUploadOptions();
 	options.chunkedMode = true;
 	options.fileKey="file";
-	videoUri = window.localStorage.getItem("videoUri");
-	options.fileName=videoUri.substr(videoUri.lastIndexOf('/')+1);
+	var link_video = window.localStorage.getItem("videoUri");
+	alert(link_video);
+	options.fileName=link_video.substr(videoUri.lastIndexOf('/')+1);
 	options.mimeType="video/quicktime";
 	var params = {};
 	//params.nombre = $("#video_nombre").val();	
@@ -58,34 +59,9 @@ function subir_video(){
 	options.params = params;
 
 	var ft = new FileTransfer();
-	ft.upload(videoUri, encodeURI("http://190.12.101.74/ais/ipeak/ws/entidades/guardar"),
+	ft.upload(link_video, encodeURI("http://190.12.101.74/ais/ipeak/ws/entidades/guardar"),
         uploadSuccess,
         uploadFail, options);
-}
-
-function envioTest(){
-navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-    destinationType: Camera.DestinationType.FILE_URI });
-}
-
-
-function onSuccess(imageURI) {
-	var options = new FileUploadOptions();
-	options.chunkedMode = true;
-	options.fileKey="file";
-	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-	options.mimeType="image/jpeg";
-	var params = {};
-	params.titulo = "prueba";	
-	params.layer_id = "2";
-	var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
-	params.geom = "POINT("+pos4326[0]+" "+pos4326[1]+")";	
-	options.params = params;
-
-	var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://190.12.101.74/ais/ipeak/ws/entidades/guardar"),
-        uploadSuccess,
-        uploadFail, options);	
 }
 
 function onFail(message) {
