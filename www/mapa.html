@@ -35,7 +35,7 @@
     
         <div id="div_buscar" style="z-index: 1000; float: left; 
         	position: absolute; top: 10px; width: 100%; text-align: center;">
-            <input type="search" class="input_buscador" placeholder="buscar..." />
+            <input type="search" id="inputBusqueda" class="input_buscador" placeholder="buscar..." />
         </div>
         
         <div id="div_peek" style="z-index: 1000; float: left; 
@@ -59,6 +59,20 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>	        
     <script type="text/javascript" src="js/ol.js"></script>	
     <script type="text/javascript" src="js/mapa.js"></script>
-	<script type="text/javascript" src="js/video_plus.js"></script>    
+	<script type="text/javascript" src="js/video_plus.js"></script>   
+	<script>
+		(function($) {
+			$(document).ready(function() {
+				$("#inputBusqueda").on( "keydown", function(event) {
+				  if(event.which == 13) 
+					realizarBusqueda();
+				})
+			});
+		});
+		
+		function realizarBusqueda(){
+			$( "#divAjaxResultadoBusqueda" ).load( "./resultado.html" );
+		}
+	</script>     
 </body>
 </html>
