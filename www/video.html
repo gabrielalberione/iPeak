@@ -55,11 +55,8 @@ body {
     <script>
 		$( document ).ready( function() { 
 			var link_video = window.localStorage.getItem("link_video");
-			alert(link_video);
-			if(link_video != null){
-				$('#embed_video').attr('src',link_video);
-				$('#reproductor').css("height", $( window ).height()-60);
-			}
+			$('#embed_video').attr('src',link_video);
+			$('#reproductor').css("height", $( window ).height()-60);
 		});
 		function salir_video(){
 			window.open("mapa.html","_self");	
