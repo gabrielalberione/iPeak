@@ -104,10 +104,11 @@ function inicializar(){
 			if (true){ //(feature.get('icono') != null){
 				iconStyle = [new ol.style.Style({
 					image: new ol.style.Icon( ({
-						anchor: [16, 32],
+						anchor: [32, 64],
 						anchorXUnits: 'pixels',
 						anchorYUnits: 'pixels',
-						opacity: 0.90,
+						scale: 0.5,
+						opacity: 0.90,	
 						src: 'http://190.12.101.74/ais/ipeak/files/icons_layers/peek_play.png'
 					}))
 				})];
