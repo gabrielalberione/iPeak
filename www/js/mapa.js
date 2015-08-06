@@ -33,6 +33,7 @@ $( document ).ready( function() {
 	if((lat_video != null) && (long_video != null)){
 		posInicial = [lat_video, long_video];
 		posActual = [lat_video, long_video];
+		banPrimeraVez = false;
 		window.localStorage.setItem("lat_video", "-6506141.183454158");
 		window.localStorage.setItem("long_video", "-4110246.2464916063");		
 	}		
