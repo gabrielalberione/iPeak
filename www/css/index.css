@@ -20,13 +20,24 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+@font-face {
+    font-family: 'TradeGothic'; /*a name to be used later*/
+    src: url('../fonts/TradeGothicLTStd.otf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'TradeGothic'; /*a name to be used later*/
+	font-weight: bold;
+    src: url('../fonts/TradeGothicLTStd-Bold.otf'); /*URL to font*/
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#E4E4E4;
     background-attachment:fixed;
-    font-family:'Relaway';
+    font-family:'TradeGothic';
     font-size:12px;
     height:100%;
     margin:0px;
@@ -165,11 +176,11 @@ h1 {
 	width: 200px; 
 	background-color: rgba(187, 31, 34, 0.7); 
 	border-radius: 5px;
-	height: 33px;
+	height: 40px;
 	padding-left: 7px;
 	color: #FFF;
 	border: 0px;
-	font-size: 12px;
+	font-size: 14px;	
 }
 
 ::-webkit-input-placeholder { color: white; } /* WebKit */
@@ -198,11 +209,6 @@ h1 {
 .rojo_transparente{
 	background-color: rgba(168,9,11,0.70);
 	border: 0px;
-}
-
-@font-face {
-    font-family: 'Relaway'; /*a name to be used later*/
-    src: url('../fonts/Raleway-Regular.ttf'); /*URL to font*/
 }
 
 .btn_blanco{

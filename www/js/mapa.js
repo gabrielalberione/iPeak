@@ -83,39 +83,7 @@ function inicializar(){
 	
 	map.on('singleclick', function(evt) {
 		/* verifica si hay entidades en layers tipo vector GeoJSON */
-		map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
-			if ((layer.get('type') != 'base') && (layer.get('nombre') != 'vectorLyBusqueda') && (layer.get('nombre') != 'vectorLyDibujo')){
-				/*$('#infoEntidadTitulo').html(feature.get('nombre'));
-				$('#infoEntidadCopete').html(feature.get('rubro')+'<br>'+feature.get('calle')+' '+feature.get('altura'));
-				var htmlDetalle = "";
-				htmlDetalle += '<b>Tel.: </b>'+feature.get('telefono')+'<br>';
-				htmlDetalle += '<b>e-mail: </b>'+feature.get('email')+'<br>';
-				htmlDetalle += '<b>Web: </b>'+feature.get('web')+'<br>';
-				htmlDetalle += feature.get('descripcion')+'<br>';
-				$('#divInfoEntidadDetalle').html(htmlDetalle);*/
-				
-				var ms = feature.get('Multimedias');
-				//$('#infoEntidadImg').attr('src','./img/sinimagen.png');
-				//$('#infoEntidadImgA').attr('href',"javascript:imageAlert('./img/sinimagen.png')");
-				if (typeof ms[0] != 'undefined'){
-					var m = ms[0];
-					var urlimg = feature.get('MultimediasUrl')+m.Multimedia.codigo;
-					var lonlat = map.getCoordinateFromPixel(evt.pixel);
-					window.localStorage.setItem("link_video", urlimg);
-					window.localStorage.setItem("lat_video", lonlat[0]);
-					window.localStorage.setItem("long_video", lonlat[1]);
-					window.open("video.html","_self");	
-			//		$('#infoEntidadImg').attr('src',urlimg);	
-					//alert();
-					//
-					//$('#embed_video').attr('src',urlimg);
-					//$('#reproductor').css("height", $( window ).height()-60);
-					//$("#reproductor").show();
-			//		$('#infoEntidadImgA').attr('href',"javascript:imageAlert('"+urlimg+"')");		
-				}
-			//	$("#divInfoEntidad").show(500);
-			}
-		});
+		recorreEntidadesEnMapaPorPixel(evt.pixel);
 	});
 
 	var vectorLayer = new ol.layer.Vector({
@@ -152,6 +120,35 @@ function inicializar(){
 	
 	view.setCenter(posInicial);
 };
+
+function recorreEntidadesEnMapaPorPixel(pixel){
+	map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+		if ((layer.get('type') != 'base') && (layer.get('nombre') != 'vectorLyBusqueda') && (layer.get('nombre') != 'vectorLyDibujo')){
+			/*$('#infoEntidadTitulo').html(feature.get('nombre'));
+			$('#infoEntidadCopete').html(feature.get('rubro')+'<br>'+feature.get('calle')+' '+feature.get('altura'));
+			var htmlDetalle = "";
+			htmlDetalle += '<b>Tel.: </b>'+feature.get('telefono')+'<br>';
+			htmlDetalle += '<b>e-mail: </b>'+feature.get('email')+'<br>';
+			htmlDetalle += '<b>Web: </b>'+feature.get('web')+'<br>';
+			htmlDetalle += feature.get('descripcion')+'<br>';
+			$('#divInfoEntidadDetalle').html(htmlDetalle);*/
+			
+			var ms = feature.get('Multimedias');
+			//$('#infoEntidadImg').attr('src','./img/sinimagen.png');
+			//$('#infoEntidadImgA').attr('href',"javascript:imageAlert('./img/sinimagen.png')");
+			if (typeof ms[0] != 'undefined'){
+				var m = ms[0];
+				var urlimg = feature.get('MultimediasUrl')+m.Multimedia.codigo;
+				var lonlat = map.getCoordinateFromPixel(pixel);
+				window.localStorage.setItem("link_video", urlimg);
+				window.localStorage.setItem("lat_video", lonlat[0]);
+				window.localStorage.setItem("long_video", lonlat[1]);
+				window.open("video.html","_self");			
+			}
+		//	$("#divInfoEntidad").show(500);
+		}
+	});
+}
 
 /* PARAMETROS deben estar en 4326 */
 function puntoGPS(xparam, yparam){	
@@ -193,6 +190,25 @@ function puntoGPS(xparam, yparam){
 		centrarMiPosicion();
 	}
 
+}
+
+function ubicarEnMapa(x,y){
+	$("#divInfoEntidad").hide();
+	
+	/* efecto, centrar en mapa */
+	var pan = ol.animation.pan({
+		duration: 1000,
+		source: view.getCenter()
+	});
+	map.beforeRender(pan);
+	if (view.getZoom() < 16){
+		view.setZoom(16);
+	}
+	/**/
+	view.setCenter([x,y]);
+	/* END efecto */
+	var s = setInterval(function(){ recorreEntidadesEnMapaPorPixel(map.getPixelFromCoordinate([x,y])); clearInterval(s); }, 1200);
+	
 }
 
 function centrarMiPosicion(){
