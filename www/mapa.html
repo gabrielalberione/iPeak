@@ -38,7 +38,6 @@
             <input type="search" id="inputBusqueda" class="input_buscador" placeholder="buscar" />
             <div id="divAjaxResultadoBusqueda"></div>
         </div>
-        
         <div id="div_peek" style="z-index: 1000; float: left; 
         	position: absolute; bottom: 5px; width: 100%; text-align: center;">
             <button type="button" class="btn btn-primary boton_upload" onclick="videoCapturePlus(false,true,11)">
@@ -88,6 +87,21 @@
 		function realizarBusqueda(){
 			$("#divAjaxResultadoBusqueda").load("./resultado.html");
 		}
+		
+		$(function() {			
+			//Enable swiping...
+			$("#divAjaxResultadoBusqueda").swipe( {
+				//Generic swipe handler for all directions
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {					
+					if(direction == "left"){
+						$('#divResultadoBusqueda').toggle("slide");
+						//$('#divResultadoBusqueda').html("");
+				   }else if(direction == "right"){
+						$('#divResultadoBusqueda').hide("slow");					
+				   }	
+				}   
+			});
+		});
 	</script>     
 </body>
 </html>
