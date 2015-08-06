@@ -25,6 +25,7 @@ function captureSuccess(mediaFiles) {
 		var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
 		var geomActual = "POINT("+pos4326[0]+" "+pos4326[1]+")";	
 		window.localStorage.setItem("geomActual", geomActual);
+		window.localStorage.setItem("videoUri", videoUri);
 	}
 	window.open("subir_video.html","_self");
 }
