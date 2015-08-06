@@ -22,7 +22,9 @@ function captureSuccess(mediaFiles) {
 		var mediaFile = mediaFiles[i];
 		mediaFile.getFormatData(getFormatDataSuccess, getFormatDataError);
 		videoUri = mediaFile.fullPath; 
-		window.localStorage.setItem("videoUri", videoUri);
+		var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
+		var geomActual = "POINT("+pos4326[0]+" "+pos4326[1]+")";	
+		window.localStorage.setItem("geomActual", geomActual);
 	}
 	window.open("subir_video.html","_self");
 }
@@ -54,8 +56,7 @@ function subir_video(){
 	params.nombre = $("#video_nombre").val();	
 	params.tags = $("#video_tags").val();
 	params.layer_id = "2";
-	var pos4326 = ol.proj.transform([posActual[0], posActual[1]],'EPSG:3857','EPSG:4326');	
-	params.geom = "POINT("+pos4326[0]+" "+pos4326[1]+")";	
+	params.geom = window.localStorage.getItem("geomActual");	
 	options.params = params;
 
 	var ft = new FileTransfer();
