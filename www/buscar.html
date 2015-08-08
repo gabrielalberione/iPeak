@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<	title>Documento sin título</title>
+   	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="js/ol3/ol.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/jAlert-v3.css" rel="stylesheet">
+    <link href="css/slidebars.min.css" rel="stylesheet">
+</head>
+<body>
+   <div class="col-xs-12">
+        <p class="menu_opciones" style="font-size: 16px; text-align: center;"><b>¿Que estas buscando?</b></p>
+    </div>
+    <div class="col-xs-12">
+        <select id="selectRubrosBusqueda" class="input_buscar">
+        </select>
+    </div>
+    <div class="col-xs-12 search" style="margin-top: 15px;">
+        <input id="inputBusqueda" class="input_buscar" name="inputBusqueda" type="text" placeholder="buscar por nombre...">
+    </div>
+    <div class="col-xs-12" style="margin-top: 15px;">
+        <button type="button" class="btn btn-primary boton_verde_alpi" onclick="realizarBusqueda()" 
+        style="border-radius: 40px; height: 40px; width: 100%; float:right;">
+            <i class="fa fa-search" style="margin-left:-1px;"></i>
+        </button>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>	        
+    <script type="text/javascript" src="js/ol3/ol.js"></script>	
+    <script type="text/javascript" src="js/index.js"></script>    
+    <script type="text/javascript" src="js/libs/jquery.js"></script>		    
+    <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+</body>
+</html>
