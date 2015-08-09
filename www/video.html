@@ -71,7 +71,7 @@ body {
 			}
 			segundos_transcurridos = (600 - segundos_transcurridos + segundos_extras);
 			if(segundos_transcurridos <= 0){
-				window.open("mapa.html","_self");
+				//window.open("mapa.html","_self");
 			}
 			$('#embed_video').attr('src',link_video);
 			$('#tiempo_restante').html(segundos_transcurridos + " ''");	
@@ -79,7 +79,7 @@ body {
 			$('#reproductor').css("height", $( window ).height()-60);
 			setInterval(function() {
 				if(segundos_transcurridos <= 0){
-					window.open("mapa.html","_self");
+					//window.open("mapa.html","_self");
 				}else{
 					segundos_transcurridos = segundos_transcurridos - 1;
 					$('#tiempo_restante').html(segundos_transcurridos + " ''");	
@@ -111,7 +111,6 @@ body {
 		 
 		 function add_like(){
 			 var entidad_id = window.localStorage.getItem("entidad_id");
-			 entidad_id = 23;
 			 $.jsonp({
 				url: "http://190.12.101.74/ais/ipeak/ws/entidades/add_like/2/23",				
 				callbackParameter: 'callback',

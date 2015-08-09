@@ -147,6 +147,7 @@ function recorreEntidadesEnMapaPorPixel(pixel){
 				window.localStorage.setItem("long_video", lonlat[1]);
 				window.localStorage.setItem("modified", m.Multimedia.modified);
 				window.localStorage.setItem("likes",  feature.get('likes'));
+				window.localStorage.setItem("entidad_id",  feature.get('id'));				
 				window.open("video.html","_self");			
 			}
 		//	$("#divInfoEntidad").show(500);

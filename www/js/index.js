@@ -16,6 +16,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		navigator.geolocation.getCurrentPosition(onSuccess, onError); 
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -51,4 +52,12 @@ var onSuccessGPS = function(position) {
 function onErrorGPS(error) {
    /* alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');*/
+}
+
+function onSuccess(position) {
+// your callback here 
+}
+
+function onError(error) { 
+  // your callback here
 }

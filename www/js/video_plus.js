@@ -36,11 +36,11 @@ function getFormatDataSuccess(mediaFileData) {
 
 function captureError(error) {
   // code 3 = cancel by user
-  alert('Returncode: ' + JSON.stringify(error.code));
+ // alert('Returncode: ' + JSON.stringify(error.code));
 }
 
 function getFormatDataError(error) {
-  alert('A Format Data Error occurred during getFormatData: ' + error.code);
+  //alert('A Format Data Error occurred during getFormatData: ' + error.code);
 }
 
 function subir_video(){	
@@ -67,7 +67,7 @@ function subir_video(){
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+   // alert('Failed because: ' + message);
 }
 
 function cancelar_video(){
@@ -75,10 +75,10 @@ function cancelar_video(){
 }
 
 function uploadSuccess(r){
-	alert("Se ha compartido tu video!");
+	//alert("Se ha compartido tu video!");
 	window.open("mapa.html","_self");
 }
 
 function uploadFail(error){
-	alert("No se pudo subir el video: "+error);
+	//alert("No se pudo subir el video: "+error);
 }
