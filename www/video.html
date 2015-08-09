@@ -41,7 +41,7 @@ body {
             <button type="button" class="btn btn-info btn-reproductor">
                 <img src="img/seguir.png">
             </button>  
-            <button type="button" class="btn btn-info btn-reproductor">
+            <button type="button" class="btn btn-info btn-reproductor" onclick="add_like()" >
                 <img src="img/mas_tiempo.png">
             </button>                           
        </div>
@@ -51,22 +51,40 @@ body {
         position: absolute; top: 20px; right: 20px; text-align: right; border-radius:20px; padding: 10px 10px 0px 10px;background-color:#FFF;">
         <p style="font-size: 18px; color:#CA5B5B;"><i class="fa fa-clock-o" style="margin-right: 5px;"></i><span id="tiempo_restante">28 '</span></p>
     </div>
+    
+    <div style="z-index: 1000; float: left; 
+        position: absolute; top: 20px; left: 20px; text-align: left; border-radius:20px; padding: 10px 10px 0px 10px;background-color:#FFF;">
+        <p style="font-size: 18px; color:#CA5B5B;"><i class="fa fa-plus" style="margin-right: 5px;"></i><span id="likes">0</span></p>
+    </div>    
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>		
+    <script type="text/javascript" src="js/jquery.jsonp.min.js"></script>	
     <script>
 		$( document ).ready( function() { 
 			var link_video = window.localStorage.getItem("link_video");
 			var fecha = window.localStorage.getItem("modified");
-			var likes = window.localStorage.getItem("like");								
-			minutos_transcurridos = tiempo_transcurrido(fecha);
-			if(minutos_transcurridos > 15){
-				minutos_transcurridos = "Muerto";
-			}else{
-				minutos_transcurridos = minutos_transcurridos + " '";
+			var likes = window.localStorage.getItem("likes");								
+			segundos_transcurridos = tiempo_transcurrido(fecha);
+			segundos_extras = 0;
+			if(likes != "undefined"){
+				segundos_extras = likes * 60;
+			}
+			segundos_transcurridos = (600 - segundos_transcurridos + segundos_extras);
+			if(segundos_transcurridos <= 0){
+				window.open("mapa.html","_self");
 			}
 			$('#embed_video').attr('src',link_video);
-			$('#tiempo_restante').html(minutos_transcurridos+" '");			
+			$('#tiempo_restante').html(segundos_transcurridos + " ''");	
+			$('#likes').html(likes);			
 			$('#reproductor').css("height", $( window ).height()-60);
+			setInterval(function() {
+				if(segundos_transcurridos <= 0){
+					window.open("mapa.html","_self");
+				}else{
+					segundos_transcurridos = segundos_transcurridos - 1;
+					$('#tiempo_restante').html(segundos_transcurridos + " ''");	
+				}
+			}, 1000);
 		});
 		function salir_video(){
 			window.open("mapa.html","_self");	
@@ -87,8 +105,36 @@ body {
      		var dateHoy = new Date();
 			console.log(dateHoy);
    			var tiempo = dateHoy.getTime() - date.getTime(); 
-			var minutos_transcurridos = Math.floor(tiempo / (1000 * 60));            
+			var minutos_transcurridos = Math.floor(tiempo / (1000));            
 			return minutos_transcurridos; 
+		 }
+		 
+		 function add_like(){
+			 var entidad_id = window.localStorage.getItem("entidad_id");
+			 entidad_id = 23;
+			 $.jsonp({
+				url: "http://190.12.101.74/ais/ipeak/ws/entidades/add_like/2/23",				
+				callbackParameter: 'callback',
+				success: function(data, status) {
+					respuestaWebService(data);
+				},
+				error: function(){
+					errorWebService();
+				}
+			});		
+			segundos_transcurridos = segundos_transcurridos + 60;
+			var likes = window.localStorage.getItem("likes");
+			likes = parseInt(likes) + 1;
+			$('#tiempo_restante').html(segundos_transcurridos + " ''");	
+			$('#likes').html(likes);	
+		 }
+		 
+		 function respuestaWebService(data){
+			 alert("Todo ok!");
+		 }
+		 
+		 function errorWebService(){
+			 alert("No se pudo dar el like");
 		 }
 
 	</script>
