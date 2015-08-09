@@ -48,3 +48,10 @@ var onSuccessGPS = function(position) {
     
     puntoGPS(position.coords.longitude, position.coords.latitude);
 };
+
+// onError Callback receives a PositionError object
+//
+function onErrorGPS(error) {
+   /* alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');*/
+}

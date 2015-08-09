@@ -50,7 +50,7 @@ function subir_video(){
 	options.chunkedMode = true;
 	options.fileKey="file";
 	var link_video = window.localStorage.getItem("videoUri");
-	alert(link_video);
+	//alert(link_video);
 	options.fileName=link_video.substr(videoUri.lastIndexOf('/')+1);
 	options.mimeType="video/quicktime";
 	var params = {};

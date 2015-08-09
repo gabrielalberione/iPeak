@@ -68,6 +68,8 @@ body {
 			segundos_extras = 0;
 			if(likes != "undefined"){
 				segundos_extras = likes * 60;
+			}else{
+				likes = 0;
 			}
 			segundos_transcurridos = (600 - segundos_transcurridos + segundos_extras);
 			if(segundos_transcurridos <= 0){
@@ -112,7 +114,7 @@ body {
 		 function add_like(){
 			 var entidad_id = window.localStorage.getItem("entidad_id");
 			 $.jsonp({
-				url: "http://190.12.101.74/ais/ipeak/ws/entidades/add_like/2/23",				
+				url: "http://190.12.101.74/ais/ipeak/ws/entidades/add_like/2/"+entidad_id,				
 				callbackParameter: 'callback',
 				success: function(data, status) {
 					respuestaWebService(data);
@@ -129,11 +131,11 @@ body {
 		 }
 		 
 		 function respuestaWebService(data){
-			 alert("Todo ok!");
+			// alert("Todo ok!");
 		 }
 		 
 		 function errorWebService(){
-			 alert("No se pudo dar el like");
+			// alert("No se pudo dar el like");
 		 }
 
 	</script>
