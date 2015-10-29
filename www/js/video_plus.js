@@ -71,7 +71,7 @@ function onFail(message) {
 }
 
 function cancelar_video(){
-	document.getElementById('pluginsDemoDiv').style.display = 'none';
+	window.open("mapa.html","_self");
 }
 
 function uploadSuccess(r){
