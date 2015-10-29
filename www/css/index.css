@@ -174,7 +174,7 @@ h1 {
 
 .input_buscador{
 	width: 200px; 
-	background-color: rgba(187, 31, 34, 0.7); 
+	background-color: rgba(84,178,195, 0.7); 
 	border-radius: 5px;
 	height: 35px;
 	padding-left: 7px;
@@ -190,7 +190,7 @@ h1 {
 :-ms-input-placeholder { color: white; } /* IE 10+ */
 
 .boton_upload{
-	background-color: rgba(187, 31, 34, 0.7); 
+	background-color: rgba(84,178,195, 0.7); 
 	border: 0px;
 	height: 80px;
 	width: 80px;
@@ -198,12 +198,17 @@ h1 {
 }
 
 .boton_upload:hover{
-	background-color: #580809;	
+	background-color: #2C5C63;	
 }
 
 .verde_transparente{
 	background-color: rgba(52,147,2,0.70);
 	border: 0px;
+}
+
+.celeste_transparente{
+	background-color: rgba(84,178,195,0.70);
+	border: 0px;	
 }
 
 .rojo_transparente{

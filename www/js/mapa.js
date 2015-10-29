@@ -93,7 +93,7 @@ function inicializar(){
 		nombre: 'lugaresoficiales',
 		titulo: 'Lugares oficiales', 
 		mapFile: '', 
-		icono: 'http://190.12.101.74/ais/ipeak/files/icons_layers/peek_play.png',
+		icono: 'img/marker.png',
 		datasource: 1,
 		visible: true,
 		source: new ol.source.GeoJSON({
@@ -110,7 +110,7 @@ function inicializar(){
 						anchorYUnits: 'pixels',
 						scale: 0.5,
 						opacity: 0.90,	
-						src: 'http://190.12.101.74/ais/ipeak/files/icons_layers/peek_play.png'
+						src: 'img/marker.png'
 					}))
 				})];
 			}
